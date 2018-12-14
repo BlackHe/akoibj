@@ -42,7 +42,7 @@ public class NoSafeDemo {
     }
 
     static class CountThread extends Thread {
-        private int count = 5;
+        private volatile int count = 5;
 
         @Override
         public void run() {
@@ -51,10 +51,8 @@ public class NoSafeDemo {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            synchronized (CountThread.class) {
-                count--;
-                System.out.println("由 " + Thread.currentThread().getName() + " 运算，count=" + count);
-            }
+            count--;
+            System.out.println("由 " + Thread.currentThread().getName() + " 运算，count=" + count);
         }
     }
 }
