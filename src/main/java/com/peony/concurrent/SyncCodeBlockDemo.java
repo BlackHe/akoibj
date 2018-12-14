@@ -11,7 +11,7 @@ public class SyncCodeBlockDemo {
      * @throws InterruptedException
      */
     public void useCustObjLock() throws InterruptedException{
-        synchronized (objLock3){
+        synchronized (objLock2){
             System.out.println("test.......begin.........");
             Thread.sleep(100);
             System.out.println("test........end.........");
@@ -53,9 +53,9 @@ public class SyncCodeBlockDemo {
         public void run() {
             SyncCodeBlockDemo demo = new SyncCodeBlockDemo();
             try {
-//                demo.useCustObjLock();   //使用自定义的对象锁（不一定安全，看自定义对象是不是static的）
+                demo.useCustObjLock();   //使用自定义的对象锁（不一定安全，看自定义对象是不是static的）
 //                demo.useThisLock();     //使用this对象锁（不一定安全，看怎么调用了）
-                demo.useClassLock();    //使用class对象锁（一定安全）
+//                demo.useClassLock();    //使用class对象锁（一定安全）
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
