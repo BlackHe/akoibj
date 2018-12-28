@@ -13,22 +13,22 @@ import java.lang.reflect.Proxy;
 public class HelloTest {
 
     @Test
-    public void testSay(){
+    public void testSay() {
         HelloService hello = new HelloServiceImpl();
         hello.sayHello();
     }
 
     @Test
-    public void testStaticProxy(){
+    public void testStaticProxy() {
         HelloService helloStaticProxy = new HelloStaticProxy();
         helloStaticProxy.sayHello();
     }
 
     @Test
-    public void testDynamicProxy(){
+    public void testDynamicProxy() {
         HelloServiceImpl helloServiceImpl = new HelloServiceImpl();
         DynamicProxy dynamicProxy = new DynamicProxy(helloServiceImpl);
-        HelloService helloService = (HelloService)Proxy.newProxyInstance(
+        HelloService helloService = (HelloService) Proxy.newProxyInstance(
                 helloServiceImpl.getClass().getClassLoader(),
                 helloServiceImpl.getClass().getInterfaces(),
                 dynamicProxy
@@ -37,15 +37,38 @@ public class HelloTest {
     }
 
     @Test
-    public void testDynamicProxyIn(){
+    public void testDynamicProxyIn() {
         DynamicProxy dynamicProxy = new DynamicProxy(new HelloServiceImpl());
         HelloService proxy = dynamicProxy.getProxy();
         proxy.sayHello();
     }
 
     @Test
-    public void testCGlibProxy(){
+    public void testCGlibProxy() {
         HelloService proxy = CGlibProxy.getInstance().getProxy(HelloServiceImpl.class);
         proxy.sayHello();
     }
+
+    /**手动静态代理，无接口实现**/
+    @Test
+    public void testStaticProxyNoInterface() {
+        int a = new OrderServiceImpl().count();
+        int b = new OrderServiceImplProxy().count();
+        System.out.println(a);
+        System.out.println(b);
+    }
+
+    class OrderServiceImpl {
+        int count() {
+            return 100;
+        }
+    }
+
+    class OrderServiceImplProxy {
+        int count() {
+            OrderServiceImpl service = new OrderServiceImpl();
+            return service.count() + 50;
+        }
+    }
+
 }

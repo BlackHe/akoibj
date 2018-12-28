@@ -1,9 +1,15 @@
 package com.peony.design;
 
-public class MethodStack implements Stack {
+import java.io.IOException;
+
+public abstract class MethodStack implements Stack {
+
+    private Stack stack;
+
     public Object push(Object o) {
         return null;
     }
+
 
     public Object add(Object o) {
         return null;
@@ -17,7 +23,10 @@ public class MethodStack implements Stack {
         return null;
     }
 
-    public void change(){
+    public void change() throws IOException {
+
+    }
+    public void changeo() throws NullPointerException{
 
     }
 }
