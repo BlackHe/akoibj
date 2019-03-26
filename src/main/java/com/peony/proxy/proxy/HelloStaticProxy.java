@@ -22,11 +22,11 @@ public class HelloStaticProxy implements HelloService {
         after();
     }
 
-    private void before(){
+    private void before() {
         System.out.println("I'm before.........");
     }
 
-    private void after(){
+    private void after() {
         System.out.println("I'm after ..........");
     }
 }

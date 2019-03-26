@@ -7,10 +7,10 @@ import java.util.concurrent.ExecutorService;
 public class CallableTest {
 
     @Test
-    public void callableTest(){
+    public void callableTest() {
         CallableDemo callable = new CallableDemo();
         String say = callable.say();
-        System.out.println("thread name : "+say);
+        System.out.println("thread name : " + say);
 
     }
 }

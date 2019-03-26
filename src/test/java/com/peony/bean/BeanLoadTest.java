@@ -19,18 +19,18 @@ public class BeanLoadTest {
 
 
     @Test
-    public void loadBeanFromXml(){
+    public void loadBeanFromXml() {
         BeanFactory beanFactory = new XmlBeanFactory(new ClassPathResource("applicationConfig.xml"));
         TestBean testBean = (TestBean) beanFactory.getBean("testBean");
         System.out.println(testBean);
     }
 
     @Test
-    public void loadBeanFromXml1(){
+    public void loadBeanFromXml1() {
         Logger logger = LoggerFactory.getLogger(this.getClass());
-        logger.info("test value={}",123456);
+        logger.info("test value={}", 123456);
         ApplicationContext factory = new ClassPathXmlApplicationContext("applicationConfig.xml");
-        TestBean testBean = (TestBean)factory.getBean("testBean");
+        TestBean testBean = (TestBean) factory.getBean("testBean");
         System.out.println(testBean.getCreateTime());
 
     }

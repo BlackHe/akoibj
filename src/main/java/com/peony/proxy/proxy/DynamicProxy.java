@@ -25,11 +25,11 @@ public class DynamicProxy implements InvocationHandler {
     }
 
     private void before(){
-        System.out.println("I'm before.........");
+        System.out.println("I'm before.........from jdk dynamic proxy");
     }
 
     private void after(){
-        System.out.println("I'm after ..........");
+        System.out.println("I'm after ..........from jdk dynamic proxy");
     }
 
      

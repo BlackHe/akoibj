@@ -1,5 +1,6 @@
 package com.peony.proxy;
 
+import com.peony.code.KeyWorker;
 import com.peony.proxy.proxy.CGlibProxy;
 import com.peony.proxy.proxy.DynamicProxy;
 import com.peony.proxy.proxy.HelloStaticProxy;
@@ -10,7 +11,7 @@ import org.junit.Test;
 import java.lang.reflect.Proxy;
 
 
-public class HelloTest {
+public class ProxyTest {
 
     @Test
     public void testSay() {
@@ -30,6 +31,7 @@ public class HelloTest {
         DynamicProxy dynamicProxy = new DynamicProxy(helloServiceImpl);
         HelloService helloService = (HelloService) Proxy.newProxyInstance(
                 helloServiceImpl.getClass().getClassLoader(),
+                /**这个参数导致，被JDK动态代理的类必须要有接口*/
                 helloServiceImpl.getClass().getInterfaces(),
                 dynamicProxy
         );
@@ -45,11 +47,13 @@ public class HelloTest {
 
     @Test
     public void testCGlibProxy() {
-        HelloService proxy = CGlibProxy.getInstance().getProxy(HelloServiceImpl.class);
+        HelloServiceImpl proxy = CGlibProxy.getInstance().getProxy(HelloServiceImpl.class);
         proxy.sayHello();
     }
 
-    /**手动静态代理，无接口实现**/
+    /**
+     * 手动静态代理，无接口实现
+     **/
     @Test
     public void testStaticProxyNoInterface() {
         int a = new OrderServiceImpl().count();
@@ -71,4 +75,10 @@ public class HelloTest {
         }
     }
 
+
+    @Test
+    public void testCode() {
+        long machineNum = KeyWorker.getMachineNum();
+        System.out.println(machineNum);
+    }
 }

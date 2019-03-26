@@ -26,7 +26,8 @@ public abstract class MethodStack implements Stack {
     public void change() throws IOException {
 
     }
-    public void changeo() throws NullPointerException{
+
+    public void changeo() throws NullPointerException {
 
     }
 }

@@ -6,11 +6,11 @@ public class MyList {
 
     private ArrayList<String> list = new ArrayList<String>();
 
-    public void add(String item){
+    public void add(String item) {
         list.add(item);
     }
 
-    public int size(){
+    public int size() {
         return list.size();
     }
 }

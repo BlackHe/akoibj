@@ -12,7 +12,7 @@ public interface Collection<T> {
 
     <T> T add(T t);
 
-    <T> T set(T origin,T current);
+    <T> T set(T origin, T current);
 
-    <T> T  remove(T target);
+    <T> T remove(T target);
 }

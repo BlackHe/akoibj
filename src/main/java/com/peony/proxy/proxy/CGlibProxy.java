@@ -14,9 +14,12 @@ public class CGlibProxy implements MethodInterceptor {
 
     private static CGlibProxy cGlibProxy = new CGlibProxy();
 
-    private CGlibProxy(){};
+    private CGlibProxy() {
+    }
 
-    public static CGlibProxy getInstance(){
+    ;
+
+    public static CGlibProxy getInstance() {
         return cGlibProxy;
     }
 
@@ -28,15 +31,15 @@ public class CGlibProxy implements MethodInterceptor {
     }
 
     @SuppressWarnings("unchecked")
-    public <T> T getProxy(Class<T> cls){
-        return (T)Enhancer.create(cls,this);
+    public <T> T getProxy(Class<T> cls) {
+        return (T) Enhancer.create(cls, this);
     }
 
-    private void before(){
+    private void before() {
         System.out.println("I'm before......... and I from CGlibProxy");
     }
 
-    private void after(){
+    private void after() {
         System.out.println("I'm after ..........and I from CGlibProxy");
     }
 }

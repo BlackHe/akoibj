@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
        xmlns:aop="http://www.springframework.org/schema/aop"
        xmlns:task="http://www.springframework.org/schema/task"
        xmlns:context="http://www.springframework.org/schema/context"
@@ -8,11 +9,20 @@
           http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
           http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
           http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task.xsd
-          http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+          http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd"
+>
 
     <!--<bean id="testBean" class="com.peony.bean.TestBean"></bean>-->
-    <context:component-scan base-package="com.peony.bean">  </context:component-scan>
+    <context:component-scan base-package="com.peony.bean"></context:component-scan>
 
     <context:property-placeholder location=",classpath:log4j.properties" ignore-resource-not-found="true"/>
 
+    <bean
+            id="dataSource"
+            class="com.peony.bean.DataSource"
+            p:driveClass="com.mysql.jdbc.Drive"
+            p:url="localhost:3306"
+            p:passwd="123456"
+    >
+    </bean>
 </beans>

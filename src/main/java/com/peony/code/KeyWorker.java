@@ -15,17 +15,17 @@ import java.util.HashSet;
  * @create 2017-12-22 10:58
  */
 public class KeyWorker {
-    private final static long twepoch = 12888349746579L; // 机器标识位数
-    private final static long workerIdBits = 5L; // 数据中心标识位数
-    private final static long datacenterIdBits = 5L; // 毫秒内自增位数
-    private final static long sequenceBits = 12L; // 机器ID偏左移12位
-    private final static long workerIdShift = sequenceBits; // 数据中心ID左移17位
+    private final static long twepoch = 12888349746579L;        // 机器标识位数
+    private final static long workerIdBits = 5L;                // 数据中心标识位数
+    private final static long datacenterIdBits = 5L;            // 毫秒内自增位数
+    private final static long sequenceBits = 12L;               // 机器ID偏左移12位
+    private final static long workerIdShift = sequenceBits;     // 数据中心ID左移17位
     private final static long datacenterIdShift = sequenceBits + workerIdBits; // 时间毫秒左移22位
     private final static long timestampLeftShift = sequenceBits + workerIdBits + datacenterIdBits; //sequence掩码，确保sequnce不会超出上限
     private final static long sequenceMask = -1L ^ (-1L << sequenceBits); //上次时间戳
-    private static long lastTimestamp = -1L; //序列
-    private long sequence = 0L; //服务器ID
-    private long workerId = 1L;
+    private static long lastTimestamp = -1L;    //序列
+    private long sequence = 0L;                 //服务器ID
+    private long workerId = 1L;                 //机器编码(根据网卡接口)
     private static long workerMask = -1L ^ (-1L << workerIdBits); //进程编码
     private long processId = 1L;
     private static long processMask = -1L ^ (-1L << datacenterIdBits);
@@ -39,8 +39,8 @@ public class KeyWorker {
         return keyWorker.getNextId();
     }
 
-    private KeyWorker() { //获取机器编码
-        this.workerId = this.getMachineNum(); //获取进程编码
+    private KeyWorker() {
+        this.workerId = this.getMachineNum(); //获取机器编码(根据网卡接口)
         RuntimeMXBean runtimeMXBean = ManagementFactory.getRuntimeMXBean();
         this.processId = Long.valueOf(runtimeMXBean.getName().split("@")[0]).longValue(); //避免编码超出最大值
         this.workerId = workerId & workerMask;
@@ -65,7 +65,7 @@ public class KeyWorker {
             sequence = 0;
         }
         lastTimestamp = timestamp; // ID偏移组合生成最终的ID，并返回ID
-        long nextId = ((timestamp - twepoch) << timestampLeftShift) | (processId << datacenterIdShift) | (workerId << workerIdShift) | sequence;
+        long nextId = ((timestamp - twepoch) << timestampLeftShift) | (processId << datacenterIdShift) | (workerId << workerIdShift) | sequence ;
         return nextId;
     }
 
@@ -92,7 +92,7 @@ public class KeyWorker {
      *
      * @return
      */
-    private long getMachineNum() {
+    public static  long getMachineNum() {
         long machinePiece;
         StringBuilder sb = new StringBuilder();
         Enumeration<NetworkInterface> e = null;
@@ -110,44 +110,24 @@ public class KeyWorker {
     }
 
 
+
     public static void main(String[] args) {
-        int num = 10000;
-        long begin = System.currentTimeMillis();
-        for (int a = 0; a < num ; ++a) {
-            keyWorker.nextId();
+        final HashSet<Long> ids = new HashSet<Long>();
+        for (int i = 0; i < 10000; i++) {
+            ids.add(keyWorker.nextId());
         }
-        long end = System.currentTimeMillis();
-        System.out.println("生成 "+num+" 个单号，耗费了 "+(end-begin)+" 毫秒");
-//        final HashSet<Long> ids = new HashSet<Long>();
-//        for (int i = 0; i < 100; i++) {
-//            Thread t1 = new Thread(new Runnable() {
-//                public void run() {
-//                    for (int a = 0; a < 100; ++a) {
-//                        ids.add(keyWorker.nextId());
-//                        System.out.println("t1::::"+ids.size());
-//                    }
-//                }
-//            });
-//            t1.start();
-//            Thread t2 = new Thread(new Runnable() {
-//                public void run() {
-//                    for (int a = 0; a < 100; ++a) {
-//                        ids.add(keyWorker.nextId());
-//                        System.out.println("t2::::"+ids.size());
-//                    }
-//                }
-//            });
-//            t2.start();
-//            Thread t3 = new Thread(new Runnable() {
-//                public void run() {
-//                    for (int a = 0; a < 100; ++a) {
-//                        ids.add(keyWorker.nextId());
-//                        System.out.println("t3::::"+ids.size());
-//                    }
-//                }
-//            });
-//            t3.start();
-//        }
+        System.out.println(ids.size());
+        System.out.println(Thread.currentThread().getId());
+        new Thread(new Runnable() {
+            public void run() {
+                System.out.println(Thread.currentThread().getId());
+            }
+        }).start();
+        new Thread(new Runnable() {
+            public void run() {
+                System.out.println(Thread.currentThread().getId());
+            }
+        }).start();
     }
 
 }

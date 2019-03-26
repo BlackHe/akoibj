@@ -5,9 +5,10 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class Test {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         ApplicationContext factory = new ClassPathXmlApplicationContext("applicationConfig.xml");
-        TestBean testBean = (TestBean)factory.getBean("testBean");
-        System.out.println(testBean.getCreateTime());
+        Order Order = (Order) factory.getBean("order");
+        /**非web应用中，优雅的关闭spring IOC容器*/
+        ((ClassPathXmlApplicationContext) factory).registerShutdownHook();
     }
 }

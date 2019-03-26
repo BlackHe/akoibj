@@ -9,17 +9,17 @@ public class TransDemo {
     }
 
 
-
-   static class ServiceA implements Runnable {
+    static class ServiceA implements Runnable {
         private MyList list;
+
         public ServiceA(MyList list) {
             this.list = list;
         }
 
         public void run() {
             try {
-                for (;;){
-                    if (list.size() == 8){
+                for (; ; ) {
+                    if (list.size() == 8) {
                         System.out.println("list.size == 8, exit....");
                         throw new InterruptedException("list.size == 8了");
                     }
@@ -33,6 +33,7 @@ public class TransDemo {
 
     static class ServiceB implements Runnable {
         private MyList list;
+
         public ServiceB(MyList list) {
             this.list = list;
         }

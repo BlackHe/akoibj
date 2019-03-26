@@ -14,10 +14,11 @@ public class AutomicIntegerDemo {
     }
 
 
-    static class CountService implements Runnable{
+    static class CountService implements Runnable {
         private AtomicInteger count = new AtomicInteger(0);
+
         public void run() {
-            for (int i = 0; i < 10000; ++i){
+            for (int i = 0; i < 10000; ++i) {
                 System.out.println(count.incrementAndGet());
             }
         }

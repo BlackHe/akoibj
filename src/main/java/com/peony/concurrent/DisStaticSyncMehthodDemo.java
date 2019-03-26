@@ -9,7 +9,7 @@ public class DisStaticSyncMehthodDemo {
      * 调用者要注意
      */
 
-    public synchronized void print() throws InterruptedException{
+    public synchronized void print() throws InterruptedException {
         System.out.println("test.......begin.........");
         Thread.sleep(100);
         System.out.println("test........end.........");
@@ -21,7 +21,7 @@ public class DisStaticSyncMehthodDemo {
          * 1.线程安全的用法：用 disStaticSync作为锁对象，下面的4个线程都是使用这个对象作为锁对象，所以是安全的
          */
         DisStaticSyncMehthodDemo disStaticSync = new DisStaticSyncMehthodDemo();
-        for (int i = 0; i < 4; ++i){
+        for (int i = 0; i < 4; ++i) {
             new SafeThread(disStaticSync).start();
         }
         /**
@@ -29,7 +29,7 @@ public class DisStaticSyncMehthodDemo {
          *  而非static的，有synchronized修饰的方式，默认的锁对象是当前调用者对象，可见4个线程new了4个对象作为调用者，每个线程持有的锁都不同，
          *  所以线程不安全
          */
-        for (int i = 0; i < 4; ++i){
+        for (int i = 0; i < 4; ++i) {
             new NoSafeThread().start();
         }
     }
@@ -37,21 +37,23 @@ public class DisStaticSyncMehthodDemo {
 
     static class SafeThread extends Thread {
         private DisStaticSyncMehthodDemo analyze;
+
         public SafeThread(DisStaticSyncMehthodDemo para) {
             analyze = para;
         }
+
         @Override
         public void run() {
             try {
                 analyze.print();
-            }catch (InterruptedException e){
+            } catch (InterruptedException e) {
                 e.printStackTrace();
             }
 
         }
     }
 
-    static class NoSafeThread extends Thread{
+    static class NoSafeThread extends Thread {
         @Override
         public void run() {
             DisStaticSyncMehthodDemo demo = new DisStaticSyncMehthodDemo();
