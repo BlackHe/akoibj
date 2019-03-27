@@ -23,4 +23,23 @@ public class Test01 {
 
 
     }
+
+    public class Test {
+
+        public static int a = 1;
+
+        public static void main(String[] args) {
+
+            int a = 10;
+
+            a++; Test.a++;
+
+            Test t=new Test();
+
+            System.out.println("a=" + a + " t.a=" + t.a);
+
+        }
+
+    }
+
 }
