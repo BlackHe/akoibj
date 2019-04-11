@@ -15,6 +15,6 @@
         </environment>
     </environments>
     <mappers>
-        <mapper resource="com/peony/ibatis/mapper/bookMapper.xml"/>
+        <mapper resource="mapper/bookMapper.xml"/>
     </mappers>
 </configuration>

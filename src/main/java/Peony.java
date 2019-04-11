@@ -1,5 +1,3 @@
-package com.ibatis;
-
 import com.peony.ibatis.entity.BookDO;
 import com.peony.ibatis.repository.BookDAO;
 import org.apache.ibatis.io.Resources;
@@ -12,11 +10,11 @@ import java.io.InputStream;
 
 public class Peony {
     public static void main(String[] args) throws IOException {
-        String resource ="com/peony/ibatis/config/mybatis-config.xml";
+        String resource = "mybatis-config.xml";
         InputStream inputStream = Resources.getResourceAsStream(resource);
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
         SqlSession sqlSession = sqlSessionFactory.openSession();
         BookDAO mapper = sqlSession.getMapper(BookDAO.class);
-        int insertRow = mapper.insert(new BookDO("平凡的世界"));
+        int insertRow = mapper.insert(new BookDO("66666"));
     }
 }
