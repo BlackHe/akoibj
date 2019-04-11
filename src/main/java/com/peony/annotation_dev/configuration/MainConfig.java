@@ -2,6 +2,7 @@ package com.peony.annotation_dev.configuration;
 
 import com.peony.annotation_dev.configuration.config_bean.*;
 import org.springframework.context.annotation.*;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 /**
  * 主配置类
@@ -16,6 +17,7 @@ import org.springframework.context.annotation.*;
 @PropertySource({"classpath:resource.properties"})
 // 快速将一个bean注册到ioc
 @Import({Color.class,Red.class, MyImportSeletor.class,MyImportBeanDefinitionRegistrar.class})
+@EnableTransactionManagement
 public class MainConfig {
 
 
