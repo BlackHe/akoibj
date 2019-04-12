@@ -17,6 +17,6 @@ public class Peony {
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
         SqlSession sqlSession = sqlSessionFactory.openSession();
         BookDAO mapper = sqlSession.getMapper(BookDAO.class);
-        int insertRow = mapper.insert(new BookDO("平凡的世界"));
+        int insertRow = mapper.insert(new BookDO("abc"));
     }
 }
