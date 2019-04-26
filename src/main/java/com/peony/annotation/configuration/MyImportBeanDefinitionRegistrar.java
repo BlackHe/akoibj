@@ -1,6 +1,6 @@
-package com.peony.annotation_dev.configuration;
+package com.peony.annotation.configuration;
 
-import com.peony.annotation_dev.configuration.config_bean.RainBow;
+import com.peony.annotation.bean.RainBow;
 import org.springframework.beans.factory.support.BeanDefinitionRegistry;
 import org.springframework.beans.factory.support.RootBeanDefinition;
 import org.springframework.context.annotation.ImportBeanDefinitionRegistrar;

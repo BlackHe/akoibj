@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.peony.ibatis.repository.BookDAO">
+
+    <insert id="insert" parameterType="com.peony.ibatis.entity.BookDO">
+          insert into book
+          values (#{id},#{name})
+    </insert>
+
+    <resultMap id="bookResultMap" type="com.peony.ibatis.entity.BookDO">
+        <result column="name" property="name"></result>
+    </resultMap>
+
+    <sql id="selectSqlCondition" >
+        <if test=" name != null and name !='' ">name = #{name}</if>
+    </sql>
+
+    <sql id="baseSelect">
+        `id` as id,
+        `name` as name
+    </sql>
+    
+    <select id="selectList" parameterType="com.peony.ibatis.entity.BookDO" resultMap="bookResultMap">
+        select
+          <include refid="baseSelect"></include>
+        from book
+        <where>
+            <include refid="selectSqlCondition"></include>
+        </where>
+    </select>
+    
+</mapper>

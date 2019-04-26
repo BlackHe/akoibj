@@ -31,7 +31,5 @@ public class BeanLoadTest {
         logger.info("test value={}", 123456);
         ApplicationContext factory = new ClassPathXmlApplicationContext("applicationConfig.xml");
         TestBean testBean = (TestBean) factory.getBean("testBean");
-        System.out.println(testBean.getCreateTime());
-
     }
 }
