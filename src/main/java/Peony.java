@@ -16,7 +16,14 @@ public class Peony {
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
         SqlSession sqlSession = sqlSessionFactory.openSession();
         BookDAO mapper = sqlSession.getMapper(BookDAO.class);
-        List<BookDO> bookDOS = mapper.selectList(new BookDO());
-        System.out.println(bookDOS);
+        BookDO param = new BookDO();
+        List<BookDO> books = mapper.selectList(param);
+        System.out.println(books);
+//        mapper.insert(new BookDO("springcloud"));
+//        SqlSession sqlSession2 = sqlSessionFactory.openSession();
+        BookDAO mapper2 = sqlSession.getMapper(BookDAO.class);
+        List<BookDO> books2 = mapper2.selectList(param);
+        System.out.println(books2);
+
     }
 }

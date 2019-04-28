@@ -3,10 +3,10 @@
         PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
-    <environments default="development">
-        <environment id="development">
-            <transactionManager type="JDBC"/>
-            <dataSource type="POOLED">
+    <environments default="development" >
+        <environment id="development" >
+            <transactionManager type="JDBC" />
+            <dataSource type="POOLED" >
                 <property name="driver" value="com.mysql.jdbc.Driver"/>
                 <property name="url" value="jdbc:mysql://localhost:3306/albertNlg?useUnicode=true&amp;characterEncoding=UTF-8"/>
                 <property name="username" value="root"/>
@@ -15,6 +15,6 @@
         </environment>
     </environments>
     <mappers>
-        <mapper resource="mapper/bookMapper.xml"/>
+        <mapper resource="mapper/bookMapper.xml" />
     </mappers>
 </configuration>

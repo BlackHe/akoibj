@@ -2,7 +2,11 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.peony.ibatis.repository.BookDAO">
+<mapper namespace="com.peony.ibatis.repository.BookDAO" >
+
+
+    <!-- 控制是否开启二级缓存（namespace范围）-->
+    <cache />
 
     <insert id="insert" parameterType="com.peony.ibatis.entity.BookDO">
           insert into book
@@ -30,5 +34,7 @@
             <include refid="selectSqlCondition"></include>
         </where>
     </select>
+
+
     
 </mapper>
