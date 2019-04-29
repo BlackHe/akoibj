@@ -4,7 +4,7 @@ mybatis源码分析笔记
 三、mybatis初始化过程
 四、sql执行/参数替换过程
 五，缓存查询/存储过程
-    一级缓存
-    二级缓存
+    一级缓存(默认sqlSession级别)
+    二级缓存(nameSpace级别，多个sqlSession可以共享同一个缓存)
 六、结果封装返回过程
 七、插件机制
