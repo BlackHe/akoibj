@@ -10,6 +10,9 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.junit.Test;
 
+/**
+ * MyBatis 首先会查询二级缓存。若二级缓存未命中，再去查询一级缓存
+ */
 import java.io.InputStream;
 import java.util.List;
 
