@@ -10,3 +10,4 @@ mybatis源码分析笔记
         CachingExecutor.TransactionalCacheManager
 六、结果封装返回过程
 七、插件机制
+八、ibatis用到的设计模式
