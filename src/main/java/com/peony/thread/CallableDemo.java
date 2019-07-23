@@ -10,6 +10,9 @@ public class CallableDemo {
         FutureTask<String> futureTask = new FutureTask<String>(new CallableSub());
         Thread thread = new Thread(futureTask);
         thread.start();
+        thread.start();
+        thread.start();
+        thread.start();
         try {
             return futureTask.get();
         } catch (InterruptedException e) {
