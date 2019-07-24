@@ -8,5 +8,6 @@ public class ThreadRepeatStartQuestion {
         });
         thread.start();
         thread.start();
+        thread.hashCode();
     }
 }
