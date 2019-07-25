@@ -24,7 +24,7 @@ public class ThreadPoolCreateQuestion {
     }
 
     private static void printState() {
-        System.out.printf("线程【%s】正在执行,当前的线程状态是【%s】", Thread.currentThread().getName(), Thread.currentThread().getState());
+        System.err.printf("线程【%s】正在执行,当前的线程状态是【%s】", Thread.currentThread().getName(), Thread.currentThread().getState());
 
     }
 }
