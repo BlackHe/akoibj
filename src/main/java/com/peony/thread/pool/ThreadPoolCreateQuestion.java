@@ -13,13 +13,8 @@ public class ThreadPoolCreateQuestion {
     public static ExecutorService getThreadPool() throws InterruptedException {
         // create one task queue of capcity is thress, add three task to the queue;
         BlockingQueue<Runnable> tasks = new LinkedBlockingQueue<Runnable>();
-        for (int i = 0; i < 1000; i++) {
+        for (int i = 0; i < 100000; i++) {
             tasks.add(() -> {
-                try {
-                    Thread.sleep(100);
-                }catch (InterruptedException e){
-                    System.out.println(e);
-                }
                 System.out.printf("task-[%d] was executed..by thread [%s]\n", 1, Thread.currentThread().getName());
             });
         }
@@ -41,7 +36,6 @@ public class ThreadPoolCreateQuestion {
     }
 
     private static void printState() {
-//        System.err.printf("线程【%s】正在执行,当前的线程状态是【%s】", Thread.currentThread().getName(), Thread.currentThread().getState());
-
+        System.err.printf("线程【%s】正在执行,当前的线程状态是【%s】\n", Thread.currentThread().getName(), Thread.currentThread().getState());
     }
 }
