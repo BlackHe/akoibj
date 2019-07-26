@@ -11,13 +11,13 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 // 配置配申明
 @Configuration
 // 包扫描路径
-@ComponentScan("com.peony.annotation.configuration")
+//@ComponentScan("com.peony.annotation.configuration")
 // 加载properties属性到环境变量
 @PropertySource({"classpath:resource.properties"})
 // 快速将一个bean注册到ioc
-@Import({Color.class,Red.class, MyImportSeletor.class,MyImportBeanDefinitionRegistrar.class})
+//@Import({Color.class,Red.class, MyImportSeletor.class,MyImportBeanDefinitionRegistrar.class})
 // 开启事务管理
-@EnableTransactionManagement
+//@EnableTransactionManagement
 public class MainConfig {
 
 
@@ -41,5 +41,11 @@ public class MainConfig {
     public DataSource dataSource(){
         return new DataSource();
     }
+
+    @Bean
+    public Yellow yellow(){
+        return new Yellow();
+    }
+
 
 }

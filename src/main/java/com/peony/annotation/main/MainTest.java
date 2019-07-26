@@ -1,6 +1,5 @@
 package com.peony.annotation.main;
 
-import com.peony.annotation.bean.DataSource;
 import com.peony.annotation.bean.Dog;
 import com.peony.annotation.configuration.MainConfig;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
