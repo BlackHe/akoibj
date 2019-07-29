@@ -16,18 +16,15 @@ public class ThreadPoolRejectedExecutionHandlerQuestion {
     public static void main(String[] args) {
         BlockingQueue<Runnable> workQueue = new LinkedBlockingQueue<Runnable>(1000);
         new ThreadPoolExecutor(
-                5,
-                10,
-                10,
-                TimeUnit.MINUTES,
-                workQueue,
-//                new ThreadCreator(),
+                5,       // 核心线程数
+                10,  // 最大线程数
+                10,     // 空闲线程存活时间
+                TimeUnit.MINUTES,   // 空闲线程存活时间单位
+                workQueue,          // BlockQueue   任务队列
                 (r) -> {
                     return new Thread(r);
-                },
-                // 拒绝策略1:
-                new ThreadPoolExecutor.CallerRunsPolicy(),
-//                new ThreadPoolExecutor.AbortPolicy();
+                },                  // ThreadFactory    线程创建工厂
+                new ThreadPoolExecutor.CallerRunsPolicy()  // 拒绝策略
         );
     }
 
