@@ -48,6 +48,8 @@ public class ProxyTest {
     @Test
     public void testCGlibProxy() {
         HelloServiceImpl proxy = CGlibProxy.getInstance().getProxy(HelloServiceImpl.class);
+        System.out.println(proxy.getClass().getName());
+        System.out.println(Runtime.getRuntime().availableProcessors());
         proxy.sayHello();
     }
 
