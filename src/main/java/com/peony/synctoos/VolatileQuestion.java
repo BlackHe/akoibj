@@ -2,6 +2,9 @@ package com.peony.synctoos;
 
 /**
  * volatile关键字
+ * 1.避免用volatile修饰的字段涉及到的操作指令被重排序
+ * 2.保证内存可见性，即当有个多线程操作volatile修饰的变量时，读线程能及时获取到写线程修改过后最新的值
+ * 3.是一种轻量级的锁实现
  */
 public class VolatileQuestion {
 
