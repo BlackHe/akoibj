@@ -22,13 +22,13 @@ public class CountDownLatchQuestion {
         for (int i = 0; i < nThreads; i++) {
             Thread thread = new Thread(() -> {
                 try {
-                    // 所有线程在这里等待，知道主线程发枪
+                    // 所有子线程在这里等待，直到主线程发枪（即startGate.countDown()）
                     startGate.await();
                     try {
-                        // 发枪后同时开始并发的执行任务
+                        // 主线程发枪后,所有等待的子线程同时开始并发的执行任务
                         task.run();
                     } finally {
-                        // 执行完任务后，全部都递减闭锁计数器
+                        // 执行完任务后，每个线程都将 闭锁计数器 递减1
                         endGate.countDown();
                     }
                 } catch (InterruptedException ignored) {
@@ -39,9 +39,10 @@ public class CountDownLatchQuestion {
         }
         // n个线程并发执行任务线开始计时
         long start = System.nanoTime();
-        // 启动门使得主线程能够同时释放所有工作的线程
+        // 启动门/发令枪 使得主线程能够同时释放所有工作的线程
         startGate.countDown();
         // 结束门使得主线程能够等待最后一个线程执行完成，而不是顺序的等待每个线程执行完成
+        // 主线程在这里阻塞等待，直到所有线程都执行任务后，在执行后续指令
         endGate.await();
         // 所有线程并发执行完任务后，停止计时
         long end = System.nanoTime();

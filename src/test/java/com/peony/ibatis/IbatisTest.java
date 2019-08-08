@@ -27,6 +27,7 @@ public class IbatisTest {
     @Test
     public void ibatisJtest(){
 //        bookDao.insert(new BookDO("I have a dream"));
-        bookDao.selectList(new BookDO("I have a dream"));
+        List<BookDO> bookDOList = bookDao.selectList(new BookDO("I have a dream"));
+        System.out.println(bookDOList);
     }
 }
