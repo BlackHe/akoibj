@@ -26,7 +26,7 @@
         `name` as name
     </sql>
     
-    <select id="selectList" parameterType="com.peony.ibatis.entity.BookDO" resultMap="bookResultMap">
+    <select id="selectList" parameterType="com.peony.ibatis.entity.BookDO" resultMap="bookResultMap" >
         select
           <include refid="baseSelect"></include>
         from book

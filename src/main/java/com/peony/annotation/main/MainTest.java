@@ -7,8 +7,8 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 public class MainTest {
     public static void main(String[] args) {
         AnnotationConfigApplicationContext acac = new AnnotationConfigApplicationContext(MainConfig.class);
-        Dog bean = acac.getBean(Dog.class);
-        System.out.printf(bean.toString());
+        Object dataSource = acac.getBean("dataSource");
+//        System.out.printf(dataSource);
         String[] beanDefinitionNames = acac.getBeanDefinitionNames();
         for (String name : beanDefinitionNames){
             System.out.printf(name + "\n");

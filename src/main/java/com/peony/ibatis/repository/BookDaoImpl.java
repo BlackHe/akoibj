@@ -1,6 +1,7 @@
 package com.peony.ibatis.repository;
 
 import com.peony.ibatis.entity.BookDO;
+import com.peony.ibatis.entity.StudentScoreDO;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -12,7 +13,7 @@ import java.util.List;
 
 import static com.peony.utils.PrintUtils.*;
 
-public class BookDaoImpl implements BookDAO {
+public class BookDaoImpl implements BookDAO,StudentScoreDAO {
 
     private static SqlSessionFactory ssf;
 
@@ -46,6 +47,16 @@ public class BookDaoImpl implements BookDAO {
             return mapper.selectList(bookDO);
         }finally {
             sqlSession.close();
+        }
+    }
+
+    @Override
+    public List<StudentScoreDO> selectBy(String name, String subject) {
+        List<StudentScoreDO> ssList;
+        try(SqlSession sqlSession = ssf.openSession()){
+            StudentScoreDAO scoreDAO = sqlSession.getMapper(StudentScoreDAO.class);
+            ssList = scoreDAO.selectBy(name, subject);
+            return ssList;
         }
     }
 }

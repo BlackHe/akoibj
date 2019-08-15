@@ -39,12 +39,12 @@
         <appender-ref ref="ERROR"/>
     </root>
 
-    <root level="INFO">
+    <root level="DEBUG">
         <appender-ref ref="ACCESS"/>
     </root>
 
-    <logger name="com.apache" level="info"/>
-    <logger name="com.peony.ibatis" level="DEBUG"/>
+    <logger name="com.apache" level="DEBUG"/>
+    <logger name="com.peony.ibatis" level="INFO"/>
     <logger name="com.peony.ibatis.common.jdbc.SimpleDataSource" level="DEBUG"/>
     <logger name="com.peony.ibatis.common.jdbc.ScriptRunner" level="DEBUG"/>
     <logger name="com.peony.ibatis.sqlmap.engine.impl.SqlMapClientDelegate" level="DEBUG"/>

@@ -29,7 +29,7 @@ public class BeanLoadTest {
     public void loadBeanFromXml1() {
         Logger logger = LoggerFactory.getLogger(this.getClass());
         logger.info("test value={}", 123456);
-        ApplicationContext factory = new ClassPathXmlApplicationContext("applicationConfig.xml");
+        ApplicationContext factory = new ClassPathXmlApplicationContext("classpath:applicationConfig.xml");
         TestBean testBean = (TestBean) factory.getBean("testBean");
     }
 }
