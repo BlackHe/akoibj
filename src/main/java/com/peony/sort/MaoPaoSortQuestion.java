@@ -9,9 +9,7 @@ public class MaoPaoSortQuestion {
     }
 
     public static void sortByMaoPao(int[] array){
-        if (array == null || array.length == 0){
-            return;
-        }
+        if (paramValidate(array)) return;
         for (int i = 0; i < array.length; i++){
             for (int j = 0; j < array.length; j++){
                 if (i == j ){
@@ -26,10 +24,15 @@ public class MaoPaoSortQuestion {
         }
     }
 
-    public static void printArray(int[] array){
+    private static boolean paramValidate(int[] array) {
         if (array == null || array.length == 0){
-            return;
+            return true;
         }
+        return false;
+    }
+
+    public static void printArray(int[] array){
+        if (paramValidate(array)) return;
         for(int a : array){
             System.out.println(a);
         }
