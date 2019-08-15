@@ -10,11 +10,6 @@ import java.util.concurrent.TimeUnit;
 public class ThreadPoolIdleThreadDestroyQuestion {
     public static void main(String[] args) {
         int cpuNumber = Runtime.getRuntime().availableProcessors();
-        new ThreadPoolExecutor(
-                cpuNumber+1,
-                cpuNumber+6,
-                30,
-                TimeUnit.SECONDS,
-                );
+
     }
 }
