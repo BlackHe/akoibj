@@ -1,7 +1,6 @@
 package com.peony.ibatis.repository;
 
 import com.peony.ibatis.entity.BookDO;
-import com.peony.ibatis.entity.StudentScoreDO;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -13,16 +12,16 @@ import java.util.List;
 
 import static com.peony.utils.PrintUtils.*;
 
-public class BookDaoImpl implements BookDAO,StudentScoreDAO {
+public class BookDaoImpl implements BookDAO {
 
-    private static SqlSessionFactory ssf;
+    private static SqlSessionFactory sqlSessionFactory;
 
     private static Reader reader;
 
     static {
         try {
             reader = Resources.getResourceAsReader("mybatis-config.xml");
-            ssf = new SqlSessionFactoryBuilder().build(reader);
+            sqlSessionFactory = new SqlSessionFactoryBuilder().build(reader);
         } catch (IOException e) {
             e.printStackTrace();
             print(e.toString());
@@ -30,7 +29,7 @@ public class BookDaoImpl implements BookDAO,StudentScoreDAO {
     }
 
     public int insert(BookDO book) {
-        SqlSession sqlSession = ssf.openSession();
+        SqlSession sqlSession = sqlSessionFactory.openSession();
         BookDAO mapper = sqlSession.getMapper(BookDAO.class);
         try {
             return mapper.insert(book);
@@ -41,7 +40,7 @@ public class BookDaoImpl implements BookDAO,StudentScoreDAO {
     }
 
     public List<BookDO> selectList(BookDO bookDO) {
-        SqlSession sqlSession = ssf.openSession();
+        SqlSession sqlSession = sqlSessionFactory.openSession();
         BookDAO mapper = sqlSession.getMapper(BookDAO.class);
         try {
             return mapper.selectList(bookDO);
@@ -50,13 +49,7 @@ public class BookDaoImpl implements BookDAO,StudentScoreDAO {
         }
     }
 
-    @Override
-    public List<StudentScoreDO> selectBy(String name, String subject) {
-        List<StudentScoreDO> ssList;
-        try(SqlSession sqlSession = ssf.openSession()){
-            StudentScoreDAO scoreDAO = sqlSession.getMapper(StudentScoreDAO.class);
-            ssList = scoreDAO.selectBy(name, subject);
-            return ssList;
-        }
+    public static SqlSessionFactory getSqlSessionFactory() {
+        return sqlSessionFactory;
     }
 }

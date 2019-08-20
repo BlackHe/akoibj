@@ -6,7 +6,7 @@
 
 
     <!-- 控制是否开启二级缓存（namespace范围）-->
-    <cache />
+<!--    <cache  />-->
 
     <insert id="insert" parameterType="com.peony.ibatis.entity.BookDO">
           insert into book
