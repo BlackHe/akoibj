@@ -14,9 +14,11 @@ import static com.peony.utils.PrintUtils.*;
 
 public class BookDaoImpl implements BookDAO {
 
-    private static SqlSessionFactory sqlSessionFactory;
 
-    private static Reader reader;
+
+
+    public  static SqlSessionFactory sqlSessionFactory;
+    public static Reader reader;
 
     static {
         try {
@@ -27,6 +29,8 @@ public class BookDaoImpl implements BookDAO {
             print(e.toString());
         }
     }
+
+
 
     public int insert(BookDO book) {
         SqlSession sqlSession = sqlSessionFactory.openSession();
