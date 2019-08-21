@@ -8,6 +8,8 @@ import com.peony.proxy.service.HelloService;
 import com.peony.proxy.serviceImpl.HelloServiceImpl;
 import org.junit.Test;
 
+import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 
 
@@ -82,5 +84,15 @@ public class ProxyTest {
     public void testCode() {
         long machineNum = KeyWorker.getMachineNum();
         System.out.println(machineNum);
+    }
+
+    interface order{}
+
+    class OrderProxy implements InvocationHandler{
+
+        @Override
+        public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+            return null;
+        }
     }
 }

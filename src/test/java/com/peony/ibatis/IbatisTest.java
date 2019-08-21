@@ -28,20 +28,12 @@ public class IbatisTest {
     public void ibatisJtest(){
         SqlSessionFactory sqlSessionFactory = BookDaoImpl.getSqlSessionFactory();
         SqlSession sqlSession1 = sqlSessionFactory.openSession();
-        SqlSession sqlSession2 = sqlSessionFactory.openSession();
 
         log.info("==========bookMapper1 select");
         BookDAO bookMapper1 = sqlSession1.getMapper(BookDAO.class);
-        List<BookDO> bookDOS1 = bookMapper1.selectList(BookDO.builder().name("english1").build());
+        BookDO paramObj = BookDO.builder().name("english1").build();
+        List<BookDO> bookDOS1 = bookMapper1.selectList(paramObj);
         System.out.println(bookDOS1);
 
-        log.info("==========bookMapper2 insert");
-        BookDAO bookMapper2 = sqlSession2.getMapper(BookDAO.class);
-        bookMapper2.insert(BookDO.builder().name("english1").build());
-        sqlSession2.commit();
-
-        log.info("==========bookMapper1 select");
-        List<BookDO> bookDOS2 = bookMapper1.selectList(BookDO.builder().name("english1").build());
-        System.out.println(bookDOS2);
     }
 }
