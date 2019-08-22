@@ -4,13 +4,10 @@
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 
-    <properties>
-        <property name="id" value="100"></property>
-    </properties>
-
-    <settings>
-        <setting name="cacheEnabled" value="false"/>
-    </settings>
+        
+    <typeHandlers>
+        <typeHandler handler="java.lang.String" jdbcType="VARCHAR"></typeHandler>
+    </typeHandlers>
 
     <environments default="development" >
         <environment id="development" >
