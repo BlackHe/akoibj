@@ -4,11 +4,6 @@
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 
-        
-    <typeHandlers>
-        <typeHandler handler="java.lang.String" jdbcType="VARCHAR"></typeHandler>
-    </typeHandlers>
-
     <environments default="development" >
         <environment id="development" >
             <transactionManager type="JDBC" />
@@ -22,7 +17,8 @@
     </environments>
 
     <mappers>
-        <mapper resource="mapper/bookMapper.xml" />
+<!--        <mapper resource="mapper/bookMapper.xml" />-->
+        <mapper class="com.peony.ibatis.repository.BookDAO" />
     </mappers>
 
 </configuration>
