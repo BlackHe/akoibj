@@ -8,11 +8,11 @@ import java.util.concurrent.CountDownLatch;
 public class CountDownLatchQuestion {
 
     public static void main(String[] args) throws InterruptedException{
-
-        long l = timeTasks(10, () -> {
+        int nThread = 10;
+        long cost = timeTasks(nThread, () -> {
             System.out.printf("线程【%s】正在执行任务\n", Thread.currentThread().getName());
         });
-        System.out.println(l);
+        System.out.printf("[%d]个线程执行该任务总耗时[%d]纳秒",nThread,cost);
     }
 
     public static long timeTasks(int nThreads, final Runnable task) throws InterruptedException {
