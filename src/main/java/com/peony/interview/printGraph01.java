@@ -10,16 +10,30 @@ import static com.peony.utils.PrintUtils.*;
  * #####
  * ######
  * #######
- * ######
- * #####
- * ####
- * ###
- * ##
- * #
  */
 public class printGraph01 {
 
+    static final String SIGN = "#";
+
     public static void main(String[] args) {
-        print("1");
+        for (int i = 0 ; i < 14 ; ++i){
+            for (int j = 0 ; j < 7; ++j){
+                if (i >= j && i <= 7){
+                    print(SIGN);
+                }
+            }
+            println("");
+            for (int j = 7; j >0 ; ++j){
+                if (i >= j && i > 7){
+                    print(SIGN);
+                }
+            }
+        }
+    }
+
+    private static  void printAnyNumber(int num, String sign){
+        for (int i = 0 ; i <= num; ++i){
+            print(sign);
+        }
     }
 }
