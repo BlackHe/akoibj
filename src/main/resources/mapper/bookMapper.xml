@@ -6,7 +6,9 @@
 
 
     <!-- 控制是否开启二级缓存（namespace范围）-->
-<!--    <cache  />-->
+    <cache type=""/>
+
+    <cache-ref namespace="com.peony.ibatis.repository.BookDAO"/>
 
     <cache-ref namespace="Peony"></cache-ref>
 
