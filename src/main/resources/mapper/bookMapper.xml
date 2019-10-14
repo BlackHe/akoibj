@@ -10,12 +10,12 @@
 
     <cache-ref namespace="com.peony.ibatis.repository.BookDAO"/>
 
-    <insert id="insert" parameterType="com.peony.ibatis.entity.BookDO">
+    <insert id="insert" parameterType="com.peony.ibatis.entity.BookDO" >
           insert into book
           values (#{id},#{name})
     </insert>
 
-    <resultMap id="bookResultMap" type="com.peony.ibatis.entity.BookDO">
+    <resultMap id="bookResultMap" type="com.peony.ibatis.entity.BookDO" autoMapping="false" extends="">
         <result column="name" property="name"></result>
     </resultMap>
 
