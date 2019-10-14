@@ -4,7 +4,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class AtomicSequenctFactorizer {
 
-    private static AtomicInteger nextValue = new AtomicInteger(0);
+    private final static AtomicInteger nextValue = new AtomicInteger(0);
 
     private AtomicSequenctFactorizer(){};
 
