@@ -17,8 +17,8 @@
     </environments>
 
     <mappers>
-<!--        <mapper resource="mapper/bookMapper.xml" />-->
-        <mapper class="com.peony.ibatis.repository.BookDAO" />
+        <mapper resource="mapper/bookMapper.xml"/>
+<!--        <mapper class="com.peony.ibatis.repository.BookDAO" />-->
     </mappers>
 
 </configuration>
