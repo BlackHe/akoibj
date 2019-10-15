@@ -17,12 +17,4 @@
 
     <context:property-placeholder location=",classpath:log4j.properties" ignore-resource-not-found="true"/>
 
-    <bean
-            id="dataSource"
-            class="com.peony.bean.DataSource"
-            p:driveClass="com.mysql.jdbc.Drive"
-            p:url="localhost:3306"
-            p:passwd="123456"
-    >
-    </bean>
 </beans>

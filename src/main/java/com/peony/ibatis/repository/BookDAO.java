@@ -11,6 +11,5 @@ public interface BookDAO {
 
     int insert(BookDO book);
 
-    @Select("select `id` as id, `name` as name from book ")
     List<BookDO> selectList(BookDO bookDO);
 }
