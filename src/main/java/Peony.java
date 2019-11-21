@@ -1,17 +1,14 @@
-import com.peony.ibatis.entity.BookDO;
-import com.peony.ibatis.repository.BookDAO;
-import org.apache.ibatis.io.Resources;
-import org.apache.ibatis.session.SqlSession;
-import org.apache.ibatis.session.SqlSessionFactory;
-import org.apache.ibatis.session.SqlSessionFactoryBuilder;
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.math.BigDecimal;
-import java.util.List;
+import com.peony.annotation.bean.Car;
+import com.peony.annotation.configuration.MainConfig;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class Peony {
     public static void main(String[] args) {
+        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(MainConfig.class);
+        Car car = context.getBean(Car.class);
+
+
+
         // 拉姆达demo
         action(()->{
             print();
