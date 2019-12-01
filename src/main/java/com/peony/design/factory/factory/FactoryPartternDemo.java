@@ -9,6 +9,7 @@ public class FactoryPartternDemo {
         square.draw();
         Shape rectangle = ShapeFactory.create("rectangle");
         rectangle.draw();
+        System.out.println("simple factory");
 
     }
 }
