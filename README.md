@@ -1,2 +1,2 @@
 # akoibj means that all kinds of implements based java
-* algorithm,design model,concurrency,data structure,
+* algorithm,design parttern,concurrency,data structure,framework source code analyse
