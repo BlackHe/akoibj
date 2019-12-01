@@ -3,7 +3,12 @@ package com.peony.design.factory.factory;
 public class FactoryPartternDemo {
 
     public static void main(String[] args) {
-        Shape shape = ShapeFactory.create("circle");
-        shape.draw();
+        Shape circle = ShapeFactory.create("circle");
+        circle.draw();
+        Shape square = ShapeFactory.create("square");
+        square.draw();
+        Shape rectangle = ShapeFactory.create("rectangle");
+        rectangle.draw();
+
     }
 }
