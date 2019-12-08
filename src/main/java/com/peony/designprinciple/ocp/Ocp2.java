@@ -5,6 +5,14 @@ public class Ocp2 {
     public static void main(String[] args) {
         GraphicEditor2.draw(new Circle(1));
         GraphicEditor2.draw(new Squear(2));
+        // 新增功能时，只需要扩展一个类，去复写抽象类的抽象方法即可，
+        // 调用方还是按照原来的方式调用，没有任何修改，即对扩展开放，对修改关闭
+        GraphicEditor2.draw(new Shape(3) {
+            @Override
+            void draw() {
+                System.out.println(" huan qita tuxing..........");
+            }
+        });
     }
 }
 
