@@ -9,39 +9,21 @@ import com.fasterxml.jackson.databind.ObjectWriter;
 import org.junit.Test;
 
 import java.io.Serializable;
+import java.util.concurrent.TimeUnit;
 
 public class JacksonTest {
 
+    private byte[] bytes;
+    final int _1M = 1024*1024;
     @Test
-    public void test() throws JsonProcessingException {
+    public void test() throws InterruptedException {
 
+        while (true){
+            TimeUnit.SECONDS.sleep(2);
+            bytes = new byte[_1M];
+        }
 
-        ObjectMapper objectMapper = new ObjectMapper();
-        KLine kLine = new KLine(10, 20);
-        String s = JSONObject.toJSONString(kLine);
-        System.out.println(s);
 
     }
 
-
-    static class KLine implements Serializable {
-
-        double highestPrice;
-        double lowestPrice;
-
-        @Override
-        public String toString() {
-            return "KLine{" +
-                    "highestPrice=" + highestPrice +
-                    ", lowestPrice=" + lowestPrice +
-                    '}';
-        }
-
-        public KLine(double highestPrice, double lowestPrice) {
-            this.highestPrice = highestPrice;
-            this.lowestPrice = lowestPrice;
-
-
-        }
-    }
 }
