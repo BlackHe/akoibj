@@ -6,16 +6,16 @@
 
 
     <!-- 控制是否开启二级缓存（namespace范围）-->
-    <cache type=""/>
+    <!--<cache />-->
 
-    <cache-ref namespace="com.peony.ibatis.repository.BookDAO"/>
+    <!--<cache-ref namespace="com.peony.ibatis.repository.BookDAO"/>-->
 
     <insert id="insert" parameterType="com.peony.ibatis.entity.BookDO">
           insert into book
           values (#{id},#{name})
     </insert>
 
-    <resultMap id="bookResultMap" type="com.peony.ibatis.entity.BookDO" autoMapping="false" extends="">
+    <resultMap id="bookResultMap" type="com.peony.ibatis.entity.BookDO" >
         <result column="name" property="name"></result>
     </resultMap>
 
@@ -28,7 +28,7 @@
         `name` as name
     </sql>
     
-    <select id="selectList" parameterType="com.peony.ibatis.entity.BookDO" resultMap="bookResultMap" >
+    <select id="selectList" parameterType="com.peony.ibatis.entity.BookDO" resultMap="bookResultMap">
         select
           <include refid="baseSelect"></include>
         from book
