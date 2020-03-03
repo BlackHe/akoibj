@@ -12,7 +12,7 @@ import static com.peony.utils.PrintUtils.print;
 
 public class IbatisSource {
 
-    private IbatisSource(){
+    private IbatisSource() {
     }
 
     private static SqlSessionFactory sqlSessionFactory;
@@ -28,7 +28,7 @@ public class IbatisSource {
         }
     }
 
-    public static SqlSession getSqlSession(){
+    public static SqlSession getSqlSession() {
         return sqlSessionFactory.openSession();
     }
 }

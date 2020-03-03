@@ -13,16 +13,18 @@ public class Example2 {
 
 }
 
-interface IReceiver{
+interface IReceiver {
     String getInfo();
 }
+
 class Email1 implements IReceiver {
     @Override
     public String getInfo() {
-        return  "email message: hello world";
+        return "email message: hello world";
     }
 }
-class Wechat implements IReceiver{
+
+class Wechat implements IReceiver {
 
     @Override
     public String getInfo() {
@@ -30,9 +32,9 @@ class Wechat implements IReceiver{
     }
 }
 
-class Person1{
+class Person1 {
     // 此时是 【依赖倒转】 的例子，原来依赖的是实现类，而现在依赖的是一个抽象或接口
-    public void receive(IReceiver receiver){
+    public void receive(IReceiver receiver) {
         String info = receiver.getInfo();
         System.out.println(info);
     }

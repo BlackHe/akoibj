@@ -7,7 +7,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  */
 public class AutomicIntegerDemo {
 
-    public static void main(String[] args) throws InterruptedException{
+    public static void main(String[] args) throws InterruptedException {
         CountService countService = new CountService();
         Thread thread1 = new Thread(countService);
         thread1.start();
@@ -39,7 +39,7 @@ public class AutomicIntegerDemo {
 
         public void run() {
             for (int i = 0; i < 100; ++i) {
-                System.out.printf("线程【%s】正在操作自增,当前自增后的结果值是【%d】\n",Thread.currentThread().getName(),count.incrementAndGet());
+                System.out.printf("线程【%s】正在操作自增,当前自增后的结果值是【%d】\n", Thread.currentThread().getName(), count.incrementAndGet());
             }
         }
     }

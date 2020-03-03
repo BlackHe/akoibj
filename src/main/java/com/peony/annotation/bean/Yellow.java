@@ -6,7 +6,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 
 
-public class Yellow implements  BeanPostProcessor, ApplicationContextAware {
+public class Yellow implements BeanPostProcessor, ApplicationContextAware {
 
     private ApplicationContext applicationContext;
 

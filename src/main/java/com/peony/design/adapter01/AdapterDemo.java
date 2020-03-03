@@ -10,10 +10,7 @@ public class AdapterDemo {
     }
 
 
-
-
-
-    enum ReadType{
+    enum ReadType {
         SD,
         TF
     }

@@ -9,6 +9,6 @@ import org.springframework.core.type.AnnotationMetadata;
 public class MyImportBeanDefinitionRegistrar implements ImportBeanDefinitionRegistrar {
     public void registerBeanDefinitions(AnnotationMetadata annotationMetadata, BeanDefinitionRegistry beanDefinitionRegistry) {
         RootBeanDefinition rootBeanDefinition = new RootBeanDefinition(RainBow.class);
-        beanDefinitionRegistry.registerBeanDefinition("rainBow",rootBeanDefinition );
+        beanDefinitionRegistry.registerBeanDefinition("rainBow", rootBeanDefinition);
     }
 }

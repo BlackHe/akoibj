@@ -35,9 +35,9 @@ public class ObjectCopyQuestion implements Cloneable {
         System.out.println(obj.equals(clone));
         try {
             add(10);
-        }catch (RuntimeException e){
+        } catch (RuntimeException e) {
             System.out.println("runtime exception");
-        }catch (Exception e){
+        } catch (Exception e) {
             System.out.println("exception");
         }
     }

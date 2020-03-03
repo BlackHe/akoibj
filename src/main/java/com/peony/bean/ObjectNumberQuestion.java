@@ -4,6 +4,7 @@ public class ObjectNumberQuestion {
 
     /**
      * VM option: -Xmx1M
+     *
      * @param args
      */
     public static void main(String[] args) {

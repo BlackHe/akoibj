@@ -10,12 +10,12 @@ public class Car {
         System.out.println("car construct run .....");
     }
 
-    public void init(){
+    public void init() {
         System.out.println("car.init() is run...");
     }
 
 
-    public void destory(){
+    public void destory() {
         System.out.println("car.destory is run .....");
     }
 

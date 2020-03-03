@@ -13,12 +13,13 @@ public class SynchronizedReentrantQuestion {
 
     }
 
-    static class Widget{
-        public synchronized void doSomething(){
+    static class Widget {
+        public synchronized void doSomething() {
             System.out.println("Widget class synchronized method");
         }
     }
-    static class LoggingWidget extends Widget{
+
+    static class LoggingWidget extends Widget {
 
         @Override
         public synchronized void doSomething() {

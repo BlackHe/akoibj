@@ -6,18 +6,19 @@ package com.peony.concurrencyinpractice;
 public class LazyInitRace {
     private static LazyInitRace lazyInitRace;
 
-    private LazyInitRace(){
+    private LazyInitRace() {
 
-    };
+    }
 
-    public static LazyInitRace getInstance(){
+    ;
+
+    public static LazyInitRace getInstance() {
         // 此处的null判断，会出现竞态条件，会由于不恰当的执行时序而出现两个实例
-        if (lazyInitRace == null){
+        if (lazyInitRace == null) {
             lazyInitRace = new LazyInitRace();
         }
         return lazyInitRace;
     }
-
 
 
 }

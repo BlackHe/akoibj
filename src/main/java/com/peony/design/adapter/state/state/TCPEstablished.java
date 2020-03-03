@@ -4,17 +4,17 @@ import com.peony.design.adapter.state.TCPConnection;
 
 public class TCPEstablished implements TCPState {
 
-    private TCPEstablished(){
+    private TCPEstablished() {
     }
 
 
     @Override
     public String operation(TCPConnection connection) {
-        this.changeConnectionState(connection,nextState());
+        this.changeConnectionState(connection, nextState());
         return null;
     }
 
-    public void changeConnectionState(TCPConnection connection,TCPState tcpState){
+    public void changeConnectionState(TCPConnection connection, TCPState tcpState) {
         connection.changeState(tcpState);
     }
 

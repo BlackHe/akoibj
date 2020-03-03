@@ -2,9 +2,8 @@ package com.peony;
 
 /**
  * abstract class
- *
  */
-public  abstract class AbstractCache {
+public abstract class AbstractCache {
 
     /**
      * abstract method can't have method body
@@ -14,7 +13,7 @@ public  abstract class AbstractCache {
     /**
      * usual method must be have method body
      */
-    static void add(){
+    static void add() {
         final int a = 0;
     }
 }

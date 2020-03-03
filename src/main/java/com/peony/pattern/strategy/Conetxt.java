@@ -4,11 +4,11 @@ public class Conetxt {
 
     private Strategy strategy;
 
-    public int doOperation(int a, int b,String operation){
+    public int doOperation(int a, int b, String operation) {
         this.strategy = StrategyFactory.getStrategy(operation);
-        if (strategy == null){
+        if (strategy == null) {
             throw new RuntimeException("the operation not found");
         }
-        return strategy.doOperation(a,b);
+        return strategy.doOperation(a, b);
     }
 }

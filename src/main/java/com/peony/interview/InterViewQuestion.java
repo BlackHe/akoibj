@@ -9,9 +9,9 @@ public class InterViewQuestion {
         String s = "hello";
         // 比较变量s的引用地址跟常量“hello”的引用地址
         // 即【0x65321】==【0x65321】，逻辑结果为true
-        if (s == "hello"){
+        if (s == "hello") {
             System.out.println("s = hello");
-        }else {
+        } else {
             System.out.println("s != hello");
         }
     }

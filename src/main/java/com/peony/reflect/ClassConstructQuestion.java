@@ -25,8 +25,8 @@ public class ClassConstructQuestion {
         System.out.printf(instance.toString());
     }
 
-    public static <T> T instanceBuilder(Class<T> tClass){
-        if (tClass == null){
+    public static <T> T instanceBuilder(Class<T> tClass) {
+        if (tClass == null) {
             return null;
         }
         T instance = null;
@@ -37,9 +37,9 @@ public class ClassConstructQuestion {
             Parameter[] parameters = constructor.getParameters();
             for (int j = 0; j < parameters.length; j++) {
                 Class<?> type = parameters[j].getType();
-                if (type.equals(String.class)){
+                if (type.equals(String.class)) {
                     String paramName = parameters[j].getName();
-                    System.out.printf("paramName=[%s]",paramName);
+                    System.out.printf("paramName=[%s]", paramName);
                 }
             }
         }

@@ -14,11 +14,11 @@ import java.util.TreeMap;
 public class HttpDemo {
 
     @Test
-    public void httpTest()throws Exception{
+    public void httpTest() throws Exception {
         TreeMap<String, String> sortMap = new TreeMap<>();
-        sortMap.put("1timestamp",System.currentTimeMillis()+"");
-        sortMap.put("5nonce","abc");
-        sortMap.put("2nonce","abc");
+        sortMap.put("1timestamp", System.currentTimeMillis() + "");
+        sortMap.put("5nonce", "abc");
+        sortMap.put("2nonce", "abc");
         System.out.println(sortMap);
         final Mac hmacSHA256 = Mac.getInstance("HmacSHA256");
         String key = "";
@@ -27,8 +27,8 @@ public class HttpDemo {
         hmacSHA256.init(secretKeySpec);
         final byte[] bytes = hmacSHA256.doFinal(data.getBytes("UTF-8"));
         final StringBuilder sb = new StringBuilder();
-        for (byte b : bytes){
-            sb.append(Integer.toHexString((b & 0xFF) | 0X100)).substring(1,3);
+        for (byte b : bytes) {
+            sb.append(Integer.toHexString((b & 0xFF) | 0X100)).substring(1, 3);
         }
         EnumQuestion.ONE.rate();
         return;

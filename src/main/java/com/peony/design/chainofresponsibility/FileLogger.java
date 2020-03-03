@@ -2,7 +2,7 @@ package com.peony.design.chainofresponsibility;
 
 public class FileLogger extends AbstractLogger {
 
-    public FileLogger(){
+    public FileLogger() {
         super.level = AbstractLogger.FILE;
     }
 

@@ -2,9 +2,11 @@ package com.peony.design.single.innerclass;
 
 public class Example01 {
 
-    private Example01(){
+    private Example01() {
         System.out.println("single class instance...");
-    };
+    }
+
+    ;
 
     public static void main(String[] args) {
         Example01 single1 = getSingle();
@@ -15,11 +17,11 @@ public class Example01 {
         System.out.println(single3);
     }
 
-    static class SinglerHolder{
-       private static Example01 SINGLE = new Example01();
+    static class SinglerHolder {
+        private static Example01 SINGLE = new Example01();
     }
 
-    public static Example01 getSingle(){
+    public static Example01 getSingle() {
 
         // 使用到内部类属性的时候，才会进行内部类的类加载，
         // 并且列加载过程天生就是线程安全的

@@ -15,7 +15,7 @@ public class ThreadStateQuestion {
                     monitor.wait();
                     // 4.TIMED_WAITING
                     monitor.wait(1000);
-                }catch (InterruptedException e){
+                } catch (InterruptedException e) {
 
                 }
             }

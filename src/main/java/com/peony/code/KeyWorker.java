@@ -65,7 +65,7 @@ public class KeyWorker {
             sequence = 0;
         }
         lastTimestamp = timestamp; // ID偏移组合生成最终的ID，并返回ID
-        long nextId = ((timestamp - twepoch) << timestampLeftShift) | (processId << datacenterIdShift) | (workerId << workerIdShift) | sequence ;
+        long nextId = ((timestamp - twepoch) << timestampLeftShift) | (processId << datacenterIdShift) | (workerId << workerIdShift) | sequence;
         return nextId;
     }
 
@@ -92,7 +92,7 @@ public class KeyWorker {
      *
      * @return
      */
-    public static  long getMachineNum() {
+    public static long getMachineNum() {
         long machinePiece;
         StringBuilder sb = new StringBuilder();
         Enumeration<NetworkInterface> e = null;
@@ -108,7 +108,6 @@ public class KeyWorker {
         machinePiece = sb.toString().hashCode();
         return machinePiece;
     }
-
 
 
     public static void main(String[] args) {
