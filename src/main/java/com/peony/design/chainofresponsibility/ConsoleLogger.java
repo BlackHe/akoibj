@@ -2,7 +2,7 @@ package com.peony.design.chainofresponsibility;
 
 public class ConsoleLogger extends AbstractLogger {
 
-    public ConsoleLogger(){
+    public ConsoleLogger() {
         super.level = AbstractLogger.CONSOLE;
     }
 

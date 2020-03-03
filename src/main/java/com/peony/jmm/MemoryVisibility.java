@@ -20,7 +20,7 @@ public class MemoryVisibility {
 
     public static void main(String[] args) throws InterruptedException {
         new Thread(() -> {
-            while (!stopFlag){
+            while (!stopFlag) {
             }
         }).start();
         Thread.sleep(2000);

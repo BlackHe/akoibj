@@ -17,9 +17,9 @@ public class OrderServiceTest {
 
         final ServiceLoader<MessageService> messageServices = ServiceLoader.load(MessageService.class);
         final Iterator<MessageService> iterator = messageServices.iterator();
-        while (iterator.hasNext()){
+        while (iterator.hasNext()) {
             final MessageService next = iterator.next();
-            if (next !=null){
+            if (next != null) {
                 messageService = next;
                 break;
             }

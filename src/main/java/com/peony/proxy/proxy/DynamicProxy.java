@@ -19,23 +19,23 @@ public class DynamicProxy implements InvocationHandler {
 
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
         before();
-        Object result = method.invoke(target,args);
+        Object result = method.invoke(target, args);
         after();
         return result;
     }
 
-    private void before(){
+    private void before() {
         System.out.println("I'm before.........from jdk dynamic proxy");
     }
 
-    private void after(){
+    private void after() {
         System.out.println("I'm after ..........from jdk dynamic proxy");
     }
 
-     
-     @SuppressWarnings("unchecked")
-     public  <T> T getProxy(){
-        return (T)Proxy.newProxyInstance(
+
+    @SuppressWarnings("unchecked")
+    public <T> T getProxy() {
+        return (T) Proxy.newProxyInstance(
                 target.getClass().getClassLoader(),
                 target.getClass().getInterfaces(),
                 this

@@ -21,7 +21,7 @@ public class TemplateMethodStyleQuestion {
 
 }
 
-class OrderService extends BaseCommand{
+class OrderService extends BaseCommand {
 
     @Override
     void doBusiness() {
@@ -29,7 +29,7 @@ class OrderService extends BaseCommand{
     }
 }
 
-class PayService extends BaseCommand{
+class PayService extends BaseCommand {
 
     @Override
     void doBusiness() {
@@ -37,9 +37,9 @@ class PayService extends BaseCommand{
     }
 }
 
-abstract class BaseCommand{
+abstract class BaseCommand {
 
-    boolean execute(){
+    boolean execute() {
 
         // 处理日志
         System.out.println("处理日志【BaseCommand.execute】");

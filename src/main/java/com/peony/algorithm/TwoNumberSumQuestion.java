@@ -21,7 +21,7 @@ public class TwoNumberSumQuestion {
     public static int[] sum(int[] array, int n) {
         int[] indexs = new int[2];
         for (int i = 0; i < array.length; i++) {
-            for (int j = i+1; j < array.length; j++) {
+            for (int j = i + 1; j < array.length; j++) {
                 if (i != j && (array[i] + array[j]) == n) {
                     indexs[0] = i;
                     indexs[1] = j;
@@ -32,24 +32,24 @@ public class TwoNumberSumQuestion {
         return indexs;
     }
 
-    public static int[] sumByHash(int[] array,int target){
+    public static int[] sumByHash(int[] array, int target) {
         int[] indexs = new int[2];
         HashMap<Integer, Integer> hashMap = new HashMap<>(array.length);
-        for (int i = 0; i < array.length; ++i){
-            if (hashMap.containsKey(array[i])){
+        for (int i = 0; i < array.length; ++i) {
+            if (hashMap.containsKey(array[i])) {
                 indexs[0] = i;
                 indexs[1] = hashMap.get(array[i]);
                 return indexs;
-            }else {
-                hashMap.put(target - array[i],i);
+            } else {
+                hashMap.put(target - array[i], i);
             }
         }
         return indexs;
 
     }
 
-    public static void printArr(int[] arr){
-        for (int i = 0; i < arr.length; ++i){
+    public static void printArr(int[] arr) {
+        for (int i = 0; i < arr.length; ++i) {
             System.out.println(arr[i]);
         }
     }

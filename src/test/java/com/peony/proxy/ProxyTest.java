@@ -86,9 +86,10 @@ public class ProxyTest {
         System.out.println(machineNum);
     }
 
-    interface order{}
+    interface order {
+    }
 
-    class OrderProxy implements InvocationHandler{
+    class OrderProxy implements InvocationHandler {
 
         @Override
         public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {

@@ -18,17 +18,17 @@ public class ThreadPoolRejectedExecutionHandlerQuestion {
     private static final int WORK_QUEUE_SIZE = 1300;
     private static final BlockingQueue<Runnable> workQueue = new LinkedBlockingQueue<Runnable>(WORK_QUEUE_SIZE);
 
-    public static void main(String[] args) throws InterruptedException{
+    public static void main(String[] args) throws InterruptedException {
         // blockqueue的add方法，元素入队时，如果队列已满，会直接报错，抛出IllegalStateException异常，提示queue full
-        workQueue.add(ActionHolder :: action);
-        workQueue.add(ActionHolder :: action);
-        workQueue.add(ActionHolder :: action);
-        workQueue.add(ActionHolder :: action);
-        workQueue.add(ActionHolder :: action);
-        workQueue.add(ActionHolder :: action);
-        workQueue.add(ActionHolder :: action);
-        workQueue.add(ActionHolder :: action);
-        workQueue.add(ActionHolder :: action);
+        workQueue.add(ActionHolder::action);
+        workQueue.add(ActionHolder::action);
+        workQueue.add(ActionHolder::action);
+        workQueue.add(ActionHolder::action);
+        workQueue.add(ActionHolder::action);
+        workQueue.add(ActionHolder::action);
+        workQueue.add(ActionHolder::action);
+        workQueue.add(ActionHolder::action);
+        workQueue.add(ActionHolder::action);
         ThreadPoolExecutor threadPool = new ThreadPoolExecutor(
                 10,       // 核心线程数
                 12,  // 最大线程数
@@ -36,20 +36,20 @@ public class ThreadPoolRejectedExecutionHandlerQuestion {
                 TimeUnit.SECONDS,   // 空闲线程存活时间单位
                 workQueue,          // BlockQueue   任务队列
                 (r) -> {
-                    Thread thread = new Thread(r,"c"+count.decrementAndGet());
-                    System.out.printf("构建了一个线程【%s】\n",thread.getName());
+                    Thread thread = new Thread(r, "c" + count.decrementAndGet());
+                    System.out.printf("构建了一个线程【%s】\n", thread.getName());
                     return thread;
                 },                  // ThreadFactory    线程创建工厂
                 new ThreadPoolExecutor.CallerRunsPolicy()  // 拒绝策略-交给上层调用者处理多余任务
         );
-        System.out.println("activeCount =>"+threadPool.getActiveCount());
-        threadPool.execute(ActionHolder :: action);
+        System.out.println("activeCount =>" + threadPool.getActiveCount());
+        threadPool.execute(ActionHolder::action);
 //        threadPool.execute(ActionHolder :: action);
 //        threadPool.execute(ActionHolder :: action);
 //        threadPool.execute(ActionHolder :: action);
-        System.out.println("activeCount =>"+threadPool.getActiveCount());
-        for (int i = 0; i < 1000; i++){
-            workQueue.add(ActionHolder :: action);
+        System.out.println("activeCount =>" + threadPool.getActiveCount());
+        for (int i = 0; i < 1000; i++) {
+            workQueue.add(ActionHolder::action);
         }
         threadPool.shutdown();
     }
@@ -69,9 +69,9 @@ public class ThreadPoolRejectedExecutionHandlerQuestion {
         }
     }
 
-    static class ActionHolder{
-        public static void action(){
-            System.out.printf("正在执行任务，当前的线程是【%s】\n",Thread.currentThread().getName());
+    static class ActionHolder {
+        public static void action() {
+            System.out.printf("正在执行任务，当前的线程是【%s】\n", Thread.currentThread().getName());
         }
     }
 }

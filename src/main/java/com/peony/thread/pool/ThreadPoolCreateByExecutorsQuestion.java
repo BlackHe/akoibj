@@ -6,7 +6,7 @@ import java.util.concurrent.ScheduledExecutorService;
 //import java.util.concurrent.Executors;
 
 // 静态导包 since 1.54
-import static  java.util.concurrent.Executors.*;
+import static java.util.concurrent.Executors.*;
 
 /**
  * 通过Executors获取线程池

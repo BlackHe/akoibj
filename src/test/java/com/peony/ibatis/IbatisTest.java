@@ -17,7 +17,7 @@ public class IbatisTest {
 
 
     @Test
-    public void ibatisJtest(){
+    public void ibatisJtest() {
 
         SqlSession sqlSession = IbatisSource.getSqlSession();
 

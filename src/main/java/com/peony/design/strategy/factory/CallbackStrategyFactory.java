@@ -7,18 +7,16 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class CallbackStrategyFactory {
 
-    private static ConcurrentHashMap<String,CallbackStrategy> strategyPool = new ConcurrentHashMap<>();
+    private static ConcurrentHashMap<String, CallbackStrategy> strategyPool = new ConcurrentHashMap<>();
 
 
-    public static void register(String callStyle,CallbackStrategy callbackStrategy){
-        strategyPool.put(callStyle,callbackStrategy);
+    public static void register(String callStyle, CallbackStrategy callbackStrategy) {
+        strategyPool.put(callStyle, callbackStrategy);
     }
 
-    public static CallbackStrategy getCallbackStrategy(String callStyle){
+    public static CallbackStrategy getCallbackStrategy(String callStyle) {
         return strategyPool.get(callStyle);
     }
-
-
 
 
 }

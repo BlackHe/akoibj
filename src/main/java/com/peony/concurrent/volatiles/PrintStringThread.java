@@ -3,7 +3,7 @@ package com.peony.concurrent.volatiles;
 /**
  *
  */
-public class PrintStringThread implements Runnable{
+public class PrintStringThread implements Runnable {
 
     private boolean isCoutinue = true;
 

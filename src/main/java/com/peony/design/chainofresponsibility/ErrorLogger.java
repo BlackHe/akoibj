@@ -2,7 +2,7 @@ package com.peony.design.chainofresponsibility;
 
 public class ErrorLogger extends AbstractLogger {
 
-    public ErrorLogger(){
+    public ErrorLogger() {
         super.level = AbstractLogger.ERROR;
     }
 

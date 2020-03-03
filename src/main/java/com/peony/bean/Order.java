@@ -16,12 +16,12 @@ public final class Order {
     private Report report;
 
     @PreDestroy
-    public void destory(){
+    public void destory() {
         System.out.println("I'm die....");
     }
 
     @PostConstruct
-    public void init(){
+    public void init() {
         System.out.println("I'm brith.........");
     }
 }

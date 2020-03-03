@@ -7,10 +7,10 @@ public class SingletonQuestion {
         instance.say();
     }
 
-    enum SingletonEnum{
+    enum SingletonEnum {
         INSTANCE;
 
-        public void say(){
+        public void say() {
             System.out.println("枚举实现的单例模式。。。");
         }
     }

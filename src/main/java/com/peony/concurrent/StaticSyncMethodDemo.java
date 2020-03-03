@@ -7,7 +7,7 @@ package com.peony.concurrent;
  */
 public class StaticSyncMethodDemo {
 
-    public static synchronized void print(){
+    public static synchronized void print() {
         System.out.println("....test...........begin...........");
         try {
             Thread.sleep(100);
@@ -17,7 +17,7 @@ public class StaticSyncMethodDemo {
         System.out.println("....test............end............");
     }
 
-    static class SafeThread extends Thread{
+    static class SafeThread extends Thread {
         @Override
         public void run() {
             StaticSyncMethodDemo.print();
@@ -25,7 +25,7 @@ public class StaticSyncMethodDemo {
     }
 
     public static void main(String[] args) {
-        for (int i = 0; i < 4; ++i){
+        for (int i = 0; i < 4; ++i) {
             new SafeThread().start();
         }
     }

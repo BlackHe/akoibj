@@ -4,7 +4,7 @@ public class SafeSequence {
 
     private int nextValue;
 
-    public synchronized int getNext(){
+    public synchronized int getNext() {
         return nextValue++;
     }
 }

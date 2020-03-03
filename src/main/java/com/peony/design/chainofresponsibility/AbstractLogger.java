@@ -12,13 +12,13 @@ public abstract class AbstractLogger {
 
     private AbstractLogger nextLogger;
 
-    public void log(int logLevel,String message){
-        if (logLevel == level){
+    public void log(int logLevel, String message) {
+        if (logLevel == level) {
             write(message);
         }
         setNextLogger();
-        if (nextLogger != null){
-            nextLogger.log(logLevel,message);
+        if (nextLogger != null) {
+            nextLogger.log(logLevel, message);
         }
     }
 

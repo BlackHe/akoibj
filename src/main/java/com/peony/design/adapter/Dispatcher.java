@@ -14,12 +14,11 @@ public class Dispatcher {
 
     private static final List<BaseAdapter> allAdapters = new ArrayList<BaseAdapter>();
 
-    public static void doDispatcher(){
+    public static void doDispatcher() {
         BaseController handler = new RedisController();
         BaseAdapter adapter = getAdapter(handler);
         String result = adapter.hand(handler);
         System.out.println(result);
-
 
 
     }
@@ -33,9 +32,9 @@ public class Dispatcher {
         allAdapters.add(new RedisAdapter());
     }
 
-    public static BaseAdapter getAdapter(BaseController handler){
-        for(BaseAdapter adapter : allAdapters){
-            if (adapter.suports(handler)){
+    public static BaseAdapter getAdapter(BaseController handler) {
+        for (BaseAdapter adapter : allAdapters) {
+            if (adapter.suports(handler)) {
                 return adapter;
             }
         }

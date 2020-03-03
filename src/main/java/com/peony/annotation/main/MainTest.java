@@ -10,7 +10,7 @@ public class MainTest {
         Object dataSource = acac.getBean("dataSource");
 //        System.out.printf(dataSource);
         String[] beanDefinitionNames = acac.getBeanDefinitionNames();
-        for (String name : beanDefinitionNames){
+        for (String name : beanDefinitionNames) {
             System.out.printf(name + "\n");
         }
     }

@@ -8,24 +8,23 @@ public class Peony {
         Car car = context.getBean(Car.class);
 
 
-
         // 拉姆达demo
-        action(()->{
+        action(() -> {
             print();
         });
         //内联demo
         action(Peony::print);
     }
 
-    static void action(Command command){
+    static void action(Command command) {
         command.query();
     }
 
-    static void print(){
+    static void print() {
         System.out.println("666");
     }
 
-    interface Command{
+    interface Command {
         void query();
     }
 

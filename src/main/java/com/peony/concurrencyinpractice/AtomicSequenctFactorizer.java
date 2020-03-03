@@ -6,9 +6,12 @@ public class AtomicSequenctFactorizer {
 
     private final static AtomicInteger nextValue = new AtomicInteger(0);
 
-    private AtomicSequenctFactorizer(){};
+    private AtomicSequenctFactorizer() {
+    }
 
-    public static int getNext(){
+    ;
+
+    public static int getNext() {
         return nextValue.incrementAndGet();
     }
 }

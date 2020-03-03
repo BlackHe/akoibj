@@ -6,7 +6,6 @@ import java.io.Serializable;
 public class BookDO implements Serializable {
 
 
-
     private int id;
 
     private String name;

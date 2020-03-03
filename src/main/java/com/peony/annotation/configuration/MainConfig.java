@@ -24,26 +24,27 @@ public class MainConfig {
     // 交给IOC容器管理的bean
     @Bean(initMethod = "init", destroyMethod = "destory")
     @Scope("singleton")
-    public Car car(){
+    public Car car() {
         return new Car();
     }
 
     /**
      * FactoryBean的用法
+     *
      * @return
      */
     @Bean
-    public DogFactroyBean dogFactroyBean(){
+    public DogFactroyBean dogFactroyBean() {
         return new DogFactroyBean();
     }
 
     @Bean
-    public DataSource dataSource(){
+    public DataSource dataSource() {
         return new DataSource();
     }
 
     @Bean
-    public Yellow yellow(){
+    public Yellow yellow() {
         return new Yellow();
     }
 

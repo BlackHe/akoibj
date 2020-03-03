@@ -3,15 +3,16 @@ package com.peony.concurrent;
 public class SyncCodeBlockDemo {
     private final static Object objLock = new Object(); //线程 安全 的锁对象
     private static Object objLock1 = new Object();      //线程 安全 的锁对象
-    private final  Object objLock2 = new Object();      //线程  不安全  的锁对象
+    private final Object objLock2 = new Object();      //线程  不安全  的锁对象
     private Object objLock3 = new Object();             //线程  不安全  的锁对象
 
     /**
-     *  //使用自定义的对象锁
+     * //使用自定义的对象锁
+     *
      * @throws InterruptedException
      */
-    public void useCustObjLock() throws InterruptedException{
-        synchronized (objLock2){
+    public void useCustObjLock() throws InterruptedException {
+        synchronized (objLock2) {
             System.out.println("test.......begin.........");
             Thread.sleep(100);
             System.out.println("test........end.........");
@@ -20,10 +21,11 @@ public class SyncCodeBlockDemo {
 
     /**
      * 使用this(调用者)对象锁
+     *
      * @throws InterruptedException
      */
-    public void useThisLock() throws InterruptedException{
-        synchronized (this){
+    public void useThisLock() throws InterruptedException {
+        synchronized (this) {
             System.out.println("test.......begin.........");
             Thread.sleep(100);
             System.out.println("test........end.........");
@@ -32,10 +34,11 @@ public class SyncCodeBlockDemo {
 
     /**
      * 使用T.class对象锁
+     *
      * @throws InterruptedException
      */
-    public void useClassLock() throws InterruptedException{
-        synchronized (SyncCodeBlockDemo.class){
+    public void useClassLock() throws InterruptedException {
+        synchronized (SyncCodeBlockDemo.class) {
             System.out.println("test.......begin.........");
             Thread.sleep(100);
             System.out.println("test........end.........");
@@ -43,12 +46,12 @@ public class SyncCodeBlockDemo {
     }
 
     public static void main(String[] args) {
-        for (int i = 0; i < 4; ++i){
+        for (int i = 0; i < 4; ++i) {
             new SubThread().start();
         }
     }
 
-   static class SubThread extends Thread{
+    static class SubThread extends Thread {
         @Override
         public void run() {
             SyncCodeBlockDemo demo = new SyncCodeBlockDemo();

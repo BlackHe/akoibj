@@ -3,7 +3,7 @@ package com.peony.design.adapter01;
 public class TFCardAdapter implements SDCard {
     private TFCard tfCard;
 
-    public TFCardAdapter(TFCard tfCard){
+    public TFCardAdapter(TFCard tfCard) {
         this.tfCard = tfCard;
     }
 
