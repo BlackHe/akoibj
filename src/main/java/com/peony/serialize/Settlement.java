@@ -11,6 +11,8 @@ public class Settlement implements Serializable {
 
     private Integer qty;
 
+    private String remark;
+
     public String getOrderId() {
         return orderId;
     }
@@ -27,11 +29,20 @@ public class Settlement implements Serializable {
         this.qty = qty;
     }
 
+    public String getRemark() {
+        return remark;
+    }
+
+    public void setRemark(String remark) {
+        this.remark = remark;
+    }
+
     @Override
     public String toString() {
         return "Settlement{" +
                 "orderId='" + orderId + '\'' +
                 ", qty=" + qty +
+                ", remark='" + remark + '\'' +
                 '}';
     }
 
