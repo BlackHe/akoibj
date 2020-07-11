@@ -4,12 +4,13 @@ import lombok.Data;
 import org.joda.time.DateTime;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
+import org.springframework.validation.annotation.Validated;
 
 @Data
 @Component
 public class TestBean {
 
-    private String orderCode;
+    public String orderCode;
     private String createTime;
 
     public TestBean() {
