@@ -8,7 +8,8 @@ import java.util.concurrent.ConcurrentHashMap;
 public class ConcurrentHashMapQuestion {
 
     public static void main(String[] args) {
-        ConcurrentHashMap<String, String> concurrentHashMap = new ConcurrentHashMap<>(16);
+        ConcurrentHashMap<String, String> map = new ConcurrentHashMap<>(16);
+        map.put("name","black");
         // ConcurrentHashMap的key和value都不能为null,否则后抛出NPE
 //        concurrentHashMap.put("name",null);
         // 采用了分段锁的机制，锁的粒度缩小到Node节点级别
@@ -20,6 +21,7 @@ public class ConcurrentHashMapQuestion {
                                         new Hnode("qianshi", null)))));
         String print = hnode.print();
         System.out.println(print);
+
 
     }
 
