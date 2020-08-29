@@ -12,21 +12,9 @@
           http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd"
 >
 
-    <bean id="testBean"
-          class="com.peony.bean.TestBean"
-          name="test1"
-          scope="prototype"
-          abstract="true"
-          lazy-init="default"
-          factory-method="aspectOf"
-    >
-        <meta key="orderCode" value="1"></meta>
-        <meta key="createTime" value="2"></meta>
-        <property name="orderCode" value="12"></property>
-        <qualifier type="" value="we">
-            <attribute key="12" value="12"/>
-        </qualifier>
-    </bean>
+
+
+    <!--<bean id="testBean" class="com.peony.bean.TestBean"></bean>-->
     <context:component-scan base-package="com.peony.bean"></context:component-scan>
 
     <context:property-placeholder location=",classpath:log4j.properties" ignore-resource-not-found="true"/>

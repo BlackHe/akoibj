@@ -4,28 +4,12 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 
 public class Peony {
     public static void main(String[] args) {
-        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(MainConfig.class);
-        Car car = context.getBean(Car.class);
 
+        System.out.println(16%33);
+        System.out.println(16&32);
 
-        // 拉姆达demo
-        action(() -> {
-            print();
-        });
-        //内联demo
-        action(Peony::print);
     }
 
-    static void action(Command command) {
-        command.query();
-    }
 
-    static void print() {
-        System.out.println("666");
-    }
-
-    interface Command {
-        void query();
-    }
 
 }
