@@ -11,23 +11,23 @@ public class AutomicIntegerDemo {
         CountService countService = new CountService();
         Thread thread1 = new Thread(countService);
         thread1.start();
-        thread1.join();
+//        thread1.join();
 
         Thread thread2 = new Thread(countService);
         thread2.start();
-        thread2.join();
+//        thread2.join();
 
         Thread thread3 = new Thread(countService);
         thread3.start();
-        thread3.join();
+//        thread3.join();
 
         Thread thread4 = new Thread(countService);
         thread4.start();
-        thread4.join();
+//        thread4.join();
 
         Thread thread5 = new Thread(countService);
         thread5.start();
-        thread5.join();
+//        thread5.join();
 
         System.out.println(CountService.count.get());
 
