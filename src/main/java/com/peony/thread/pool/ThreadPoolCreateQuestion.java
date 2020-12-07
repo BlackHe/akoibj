@@ -4,40 +4,28 @@ import java.util.concurrent.*;
 
 public class ThreadPoolCreateQuestion {
 
-
     public static void main(String[] args) throws InterruptedException {
-        ThreadPoolExecutor threadPool = getThreadPool();
-
-        threadPool.allowCoreThreadTimeOut(true);
+        ExecutorService threadPool = getThreadPool();
         threadPool.execute(ThreadPoolCreateQuestion::printState);
-        sleepSeconds(1);
-        threadPool.execute(ThreadPoolCreateQuestion::printState);
-        sleepSeconds(1);
-        threadPool.execute(ThreadPoolCreateQuestion::printState);
-        sleepSeconds(1);
-        threadPool.execute(ThreadPoolCreateQuestion::printState);
-        sleepSeconds(1);
-        threadPool.execute(ThreadPoolCreateQuestion::printState);
-        sleepSeconds(1);
-        threadPool.execute(ThreadPoolCreateQuestion::printState);
-        sleepSeconds(1);
-        threadPool.execute(ThreadPoolCreateQuestion::printState);
-        sleepSeconds(1);
-        threadPool.execute(ThreadPoolCreateQuestion::printState);
-        sleepSeconds(1);
-
         threadPool.shutdown();
     }
 
-    public static ThreadPoolExecutor getThreadPool() throws InterruptedException {
+    public static ExecutorService getThreadPool() throws InterruptedException {
         // create one task queue of capcity is thress, add three task to the queue;
         BlockingQueue<Runnable> tasks = new LinkedBlockingQueue<Runnable>();
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < 100000; i++) {
             tasks.add(() -> {
-                System.out.printf("init... task-[%d] was executed..by thread [%s]\n", 1, Thread.currentThread().getName());
+                System.out.printf("task-[%d] was executed..by thread [%s]\n", 1, Thread.currentThread().getName());
             });
         }
-        ThreadPoolExecutor threadPool = new ThreadPoolExecutor(
+//        tasks.add(() -> {
+//            System.out.printf("task-[%d] was executed..by thread [%s]\n",2,Thread.currentThread().getName());
+//        });
+//        tasks.add(() -> {
+//            System.out.printf("task-[%d] was executed..by thread [%s]\n",3,Thread.currentThread().getName());
+//        });
+        // create one thread pool of core pool size is five, add task to the pool;
+        ExecutorService threadPool = new ThreadPoolExecutor(
                 5,
                 10,
                 30,
@@ -49,13 +37,5 @@ public class ThreadPoolCreateQuestion {
 
     private static void printState() {
         System.err.printf("线程【%s】正在执行,当前的线程状态是【%s】\n", Thread.currentThread().getName(), Thread.currentThread().getState());
-    }
-
-    private static void sleepSeconds(long seconds){
-        try {
-            TimeUnit.SECONDS.sleep(seconds);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
     }
 }
