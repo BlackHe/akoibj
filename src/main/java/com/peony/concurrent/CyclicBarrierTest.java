@@ -46,8 +46,8 @@ public class CyclicBarrierTest {
             e.printStackTrace();
         }
 
-        barrier.reset();
-        System.out.println("barrier reset...");
+//        barrier.reset();
+//        System.out.println("barrier reset...");
 
 
         new Thread(() -> {
@@ -66,7 +66,7 @@ public class CyclicBarrierTest {
         new Thread(() -> {
             try {
                 System.out.println("线程4准备中。。。");
-                sleep(2);
+                sleep(200);
                 barrier.await();
                 System.out.println("线程4准备完成，go on");
                 System.out.println("线程4结束任务");
