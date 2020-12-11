@@ -25,6 +25,8 @@ public class Demo {
 
         tl.set(new Demo(Thread.currentThread().getName()));
 
+        tl.set(new Demo(Thread.currentThread().getName()));
+
         t1 = new Thread(() -> {
             tl.set(new Demo(Thread.currentThread().getName()));
             try {

@@ -10,8 +10,10 @@ public class ObjectLyout {
         o = new Object();
 
         System.out.println(ClassLayout.parseInstance(o).toPrintable());
-        System.out.println(GraphLayout.parseInstance(o).toPrintable());
-        System.out.println(ClassLayout.parseInstance(o).instanceSize());
 
+
+        synchronized (o){
+            System.out.println(ClassLayout.parseInstance(o).toPrintable());
+        }
     }
 }
