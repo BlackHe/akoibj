@@ -11,13 +11,13 @@ public class RpcClient {
         Socket socket = new Socket("localhost", 5001);
 
         OutputStream outputStream = socket.getOutputStream();
-        BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(outputStream));
-        writer.write("AccountService#loadAccount");
+        outputStream.write("AccountService#loadAccount".getBytes("UTF-8"));
 
         InputStream inputStream = socket.getInputStream();
-        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream, "UTF-8"));
-        String response = bufferedReader.readLine();
-        System.out.println("server response : " + response);
+        int read = inputStream.read();
+        byte[] buffer = new byte[inputStream.available()];
+        inputStream.read(buffer);
+        System.out.println("server response : " + new String(buffer,"UTF-8"));
 
     }
 }

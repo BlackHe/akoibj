@@ -1,59 +1,93 @@
 package com.peony.rpc.bio.server;
 
+import com.peony.log.Log;
+
 import java.io.*;
 import java.lang.reflect.Method;
 import java.net.Socket;
+import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 
-public class ClientRequestHandler extends Thread implements Runnable{
+public class ClientRequestHandler{
 
-    private Socket socket;
+    final static int N_CPUS = Runtime.getRuntime().availableProcessors();
 
-    public ClientRequestHandler(Socket socket) {
-        this.socket = socket;
+
+    static ThreadPoolExecutor poolExecutor = new ThreadPoolExecutor(
+            N_CPUS+1,
+            N_CPUS+1,
+            0,
+            TimeUnit.SECONDS,
+            new LinkedBlockingQueue<>(6)
+    );
+
+    public static void acceptRequest(Socket socket){
+
+        poolExecutor.execute(new RequestHandlerWorker(socket));
+
     }
 
-    @Override
-    public void run() {
-        handleRequest();
-    }
+    static class RequestHandlerWorker implements Runnable{
 
-    public void handleRequest(){
-        try {
-            InputStream inputStream = socket.getInputStream();
+        Socket socket;
 
-            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+        public RequestHandlerWorker(Socket socket) {
+            this.socket = socket;
+        }
 
-            String line = bufferedReader.readLine();
+        @Override
+        public void run() {
+            handleRequest(socket);
+        }
 
-            System.out.println(line);
 
-            String[] split = line.split("#");
+        private void handleRequest(Socket socket){
+            try {
 
-            Class<?> clazz = Class.forName("com.peony.rpc." + split[0]);
+                Log.info("接受到客户端 [%s:%s]",socket.getInetAddress().getHostAddress(),socket.getPort()+"");
+                InputStream inputStream = socket.getInputStream();
 
-            Method targetMethod = clazz.getDeclaredMethod(split[1]);
 
-            Object result = targetMethod.invoke(clazz.getConstructor().newInstance());
+                int available = inputStream.available();
 
-            System.out.println(result);
+                byte[] buffer = new byte[available];
 
-            handleResult(result);
+                inputStream.read(buffer);
 
-        } catch (Exception e) {
-            e.printStackTrace();
+                String line = new String(buffer,"UTF-8");
+
+                System.out.println(line);
+
+                String[] split = line.split("#");
+
+                Class<?> clazz = Class.forName("com.peony.rpc.bio." + split[0]);
+
+                Method targetMethod = clazz.getDeclaredMethod(split[1]);
+
+                Object result = targetMethod.invoke(clazz.getConstructor().newInstance());
+
+                System.out.println(result);
+
+                handleResult(result);
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
+        public void handleResult(Object result){
+            try {
+                OutputStream outputStream = socket.getOutputStream();
+                byte[] bytes = ((String) result).getBytes("UTF-8");
+                outputStream.write(bytes);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
         }
     }
 
-    public void handleResult(Object result){
 
-        try {
 
-            OutputStream outputStream = socket.getOutputStream();
-            BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
-            bufferedWriter.write((String)result);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-    }
 }
