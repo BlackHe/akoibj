@@ -14,7 +14,7 @@ public class RpcClient {
         outputStream.write("AccountService#loadAccount".getBytes("UTF-8"));
 
         InputStream inputStream = socket.getInputStream();
-        int read = inputStream.read();
+        inputStream.read()
         byte[] buffer = new byte[inputStream.available()];
         inputStream.read(buffer);
         System.out.println("server response : " + new String(buffer,"UTF-8"));
