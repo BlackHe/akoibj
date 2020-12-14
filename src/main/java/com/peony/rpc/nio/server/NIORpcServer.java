@@ -71,7 +71,6 @@ public class NIORpcServer {
             Log.info("接收到客户端：%s", clientChannel.getRemoteAddress().toString());
             clientChannel.configureBlocking(false);
             clientChannel.register(selector, SelectionKey.OP_READ);
-            clientChannel.register(selector, SelectionKey.OP_WRITE);
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -94,9 +93,8 @@ public class NIORpcServer {
             readBuffer.flip();
             byte[] datas = new byte[readBuffer.remaining()];
             readBuffer.get(datas);
-            Log.info("客户端[%s]消息: [%s]", channel.getRemoteAddress().toString(), new String(datas, "UTF-8"));
+            Log.info("客户端：%s", new String(datas, "UTF-8"));
             channel.register(selector, SelectionKey.OP_WRITE);
-            channel.register(selector, SelectionKey.OP_READ);
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -109,15 +107,14 @@ public class NIORpcServer {
     public static void write(SelectionKey selectionKey) {
         SocketChannel channel = (SocketChannel) selectionKey.channel();
         writeBuffer.clear();
-        Log.info("客户端正在等待输入，请在控制台输入消息：");
+        Log.info("请输入：");
         Scanner scanner = new Scanner(System.in);
-        String nextLine = scanner.nextLine();
+        String nextLine =scanner.nextLine();
         try {
             writeBuffer.put(nextLine.getBytes("UTF-8"));
             writeBuffer.flip();
             channel.write(writeBuffer);
             channel.register(selector, SelectionKey.OP_READ);
-            channel.register(selector, SelectionKey.OP_WRITE);
         } catch (Exception e) {
             e.printStackTrace();
         }finally {

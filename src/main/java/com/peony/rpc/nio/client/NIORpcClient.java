@@ -24,7 +24,9 @@ public class NIORpcClient {
 
             Scanner scanner = new Scanner(System.in);
             while (true){
-                String nextLine = scanner.nextLine();
+                byteBuffer.clear();
+                Log.info("请输入:");
+                String nextLine =scanner.nextLine();
 
                 if ("exit".equals(nextLine)){
                     break;
@@ -45,7 +47,7 @@ public class NIORpcClient {
                 byte[] datas = new byte[byteBuffer.remaining()];
                 byteBuffer.get(datas);
 
-                Log.info("接受到服务端的消息：[%s]",new String(datas,"UTF-8"));
+                Log.info("服务端：[%s]",new String(datas,"UTF-8"));
                 byteBuffer.clear();
 
             }
