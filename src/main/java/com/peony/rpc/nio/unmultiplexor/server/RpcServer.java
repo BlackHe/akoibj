@@ -28,10 +28,11 @@ public class RpcServer {
             SocketChannel clientChannel = serverSocketChannel.accept();
             if (clientChannel == null){
                 System.out.println("accept non block,immediately return");
-                continue;
+            }else {
+                clientChannel.configureBlocking(false);
+                clientChannels.add(clientChannel);
             }
-            clientChannel.configureBlocking(false);
-            clientChannels.add(clientChannel);
+
 
             clientChannels.forEach(i -> {
                 Log.info("new client connect: %s",i.socket().getPort()+"");
