@@ -2,7 +2,7 @@ package com.peony.utils;
 
 import java.util.concurrent.TimeUnit;
 
-public class SleepUtils {
+public class Sleeper {
 
     public static void sleep(long seconds){
         try {

@@ -1,9 +1,8 @@
 package com.peony.rpc.nio.unmultiplexor.client;
 
 
-import com.peony.utils.SleepUtils;
+import com.peony.utils.Sleeper;
 
-import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.Socket;
 
@@ -16,6 +15,6 @@ public class RpcClient {
         OutputStream outputStream = socket.getOutputStream();
         outputStream.write("AccountService#loadAccount".getBytes("UTF-8"));
 
-        SleepUtils.sleep(100);
+        Sleeper.sleep(100);
     }
 }

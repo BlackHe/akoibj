@@ -2,7 +2,7 @@ package com.peony.rpc.nio.unmultiplexor.server;
 
 import com.peony.charset.CharsetUtils;
 import com.peony.log.Log;
-import com.peony.utils.SleepUtils;
+import com.peony.utils.Sleeper;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
@@ -24,7 +24,7 @@ public class RpcServer {
         serverSocketChannel.configureBlocking(false);
 
         while (true){
-            SleepUtils.sleep(1);
+            Sleeper.sleep(1);
             SocketChannel clientChannel = serverSocketChannel.accept();
             if (clientChannel == null){
                 System.out.println("accept non block,immediately return");
