@@ -36,6 +36,10 @@ public class RpcServer {
             clientChannels.forEach(i -> {
                 Log.info("new client connect: %s",i.socket().getPort()+"");
                 try {
+                    // 非阻塞是实现了，
+                    // 但是，每次处理客户端读写，都要调用 read，如果有10w个客户端连接，那就要调10w次read，而read是个系统调用。
+                    // read因为要读取网卡数据，需要切换到内核态才能调用，要从用户态切换到内核态，用户线程会产生中断，即软中断,80中断
+                    // 问题的本质，还是在于上层应用无法被动感知到客户端连接有了IO事件，而是要主动去【轮询】系统底层
                     int count = i.read(byteBuffer);
                     if (count == -1){
                         return;
