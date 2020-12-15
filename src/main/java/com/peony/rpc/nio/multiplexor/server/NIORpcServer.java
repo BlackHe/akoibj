@@ -20,6 +20,15 @@ public class NIORpcServer {
 
     private static Selector selector;
 
+    /**
+     * select，poll
+     * 优势：应用不再遍历fd,而是多个fd,复用一个系统调用，内核自己遍历fd
+     * 缺点：它自己不存储fd, 每次都要把fds重新给内核传递一遍，即重复传递fds
+     *
+     * 解决方案：内核自己开辟空间，存储fds   (epoll就采用了红黑树结构，存储了fds)
+     * @param args
+     * @throws Exception
+     */
     public static void main(String[] args) throws Exception {
 
         selector = Selector.open();
