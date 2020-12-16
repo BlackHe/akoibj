@@ -26,6 +26,10 @@ public class NIORpcServer {
      * 缺点：它自己不存储fd, 每次都要把fds重新给内核传递一遍，即重复传递fds
      *
      * 解决方案：内核自己开辟空间，存储fds   (epoll就采用了红黑树结构，存储了fds)
+     *
+     *
+     * epoll
+     * 优势：内核开辟空间存储客户端连接文件描述符fd
      * @param args
      * @throws Exception
      */
@@ -44,8 +48,9 @@ public class NIORpcServer {
         Log.info("server start at port [%s]", PORT + "");
 
         while (!Thread.currentThread().isInterrupted()) {
-            // 注意，此处是阻塞的，只要没有事件，就会一直阻塞
-            int select = selector.select();
+            // 注意，此处可以是阻塞的，也可以设置超时时间，只要没有事件，就会一直阻塞或者超时返回
+            // 注意，不论是select,pool,epoll,都是需要程序自己去读取IO数据的，多路复用器只是给程序哪些fd的状态发生变化
+            if (selector.select(1) <= 0) continue;
             // 只要有事件，会批量发现
             Iterator<SelectionKey> iterator = selector.selectedKeys().iterator();
             while (iterator.hasNext()) {
