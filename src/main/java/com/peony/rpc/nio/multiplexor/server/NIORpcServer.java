@@ -30,8 +30,6 @@ public class NIORpcServer {
      *
      * epoll
      * 优势：内核开辟空间存储客户端连接文件描述符fd
-     * @param args
-     * @throws Exception
      */
     public static void main(String[] args) throws Exception {
 
