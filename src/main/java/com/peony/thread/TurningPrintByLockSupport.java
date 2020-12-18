@@ -9,7 +9,7 @@ import java.util.concurrent.locks.LockSupport;
  * 即线程1输出 ABCDEFG
  * 线程2输出 123456
  */
-public class TruningPrintByLockSupport {
+public class TurningPrintByLockSupport {
 
     private static final char[] charI = "123456".toCharArray();
     private static final char[] charC = "ABCDEF".toCharArray();

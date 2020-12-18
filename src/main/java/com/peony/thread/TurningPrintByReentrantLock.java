@@ -11,7 +11,7 @@ import java.util.concurrent.locks.ReentrantLock;
  * 即线程1输出 ABCDEFG
  * 线程2输出 123456
  */
-public class TruningPrintByReentrantLock {
+public class TurningPrintByReentrantLock {
 
     static volatile AtomicInteger nextPrintIndex = new AtomicInteger();
     static char[] charArray = "A1B2C3D4E5G6".toCharArray();

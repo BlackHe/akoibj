@@ -6,7 +6,7 @@ package com.peony.thread;
  * 即线程1输出 ABCDEFG
  * 线程2输出 123456
  */
-public class TruningPrintBySynchronized {
+public class TurningPrintBySynchronized {
 
     private final static char[] charsI = {'1', '2', '3', '4', '5', '6'};
     private final static char[] charsC = {'A', 'B', 'C', 'D', 'E', 'F'};
