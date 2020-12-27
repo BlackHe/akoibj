@@ -4,9 +4,9 @@ import org.springframework.context.annotation.Conditional;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 
-@Configuration
-@Conditional(MyBeanCondition.class)
-@Import(MyBeanImportSelector.class)
+//@Configuration
+//@Conditional(MyBeanCondition.class)
+//@Import(MyBeanImportSelector.class)
 public class BeanConfiguration {
 
 

@@ -21,6 +21,9 @@ public class MainTest2 {
     public static void main(String[] args) throws InterruptedException {
 
 
+        String from = "qwerqwesdfasdf";
+        String[] split = from.split(",");
+        System.out.println(split.length);
 
 
     }

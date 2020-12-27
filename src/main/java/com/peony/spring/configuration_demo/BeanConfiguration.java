@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Bean;
 //@Configuration
 public class BeanConfiguration {
 
-    @Bean
+//    @Bean
     public OrderService orderService(){
         return new OrderService();
     }

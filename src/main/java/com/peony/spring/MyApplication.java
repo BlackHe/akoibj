@@ -9,11 +9,11 @@ import org.springframework.context.annotation.PropertySource;
 
 @Configuration
 @ComponentScan
-@PropertySource("resource.properties")
+//@PropertySource("resource.properties")
 public class MyApplication {
 
     public static void main(String[] args) {
         ApplicationContext ac = new AnnotationConfigApplicationContext(MyApplication.class);
-        System.out.println(ac.getBean(OrderService.class));
+//        System.out.println(ac.getBean(OrderService.class));
     }
 }
