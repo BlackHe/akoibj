@@ -10,22 +10,13 @@ import org.springframework.context.annotation.DependsOn;
 import org.springframework.stereotype.Component;
 
 @Component
-public class OrderService implements InitializingBean , ApplicationContextAware {
+public class OrderService {
 
     @Autowired
     private ProductService productService;
 
-    public OrderService() {
-        System.out.println("OrderService 实例化了");
-    }
 
-    @Override
-    public void afterPropertiesSet() throws Exception {
-        System.out.println("after Properties Set");
-    }
-
-    @Override
-    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-        System.out.println("aware...");
+    public ProductService getProductService() {
+        return productService;
     }
 }

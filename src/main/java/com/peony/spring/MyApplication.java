@@ -14,6 +14,8 @@ public class MyApplication {
 
     public static void main(String[] args) {
         ApplicationContext ac = new AnnotationConfigApplicationContext(MyApplication.class);
-//        System.out.println(ac.getBean(OrderService.class));
+        OrderService bean = ac.getBean(OrderService.class);
+        System.out.println(bean);
+        System.out.println(bean.getProductService());
     }
 }
