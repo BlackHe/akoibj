@@ -2,7 +2,7 @@ package com.peony.aop;
 
 public interface Calculator {
 
-    int add(int a,int b);
+    int add(int... args);
 
     int subtraction(int a,int b);
 }
