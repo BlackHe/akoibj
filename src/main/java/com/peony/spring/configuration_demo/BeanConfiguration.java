@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 
-//@Configuration
+@Configuration
 public class BeanConfiguration {
 
     @Bean
@@ -15,7 +15,6 @@ public class BeanConfiguration {
     }
 
     @Bean
-    @Primary
     public OrderService orderService2(){
         return new OrderService();
     }

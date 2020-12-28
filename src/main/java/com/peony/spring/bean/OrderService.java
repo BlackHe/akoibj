@@ -9,7 +9,7 @@ import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.annotation.DependsOn;
 import org.springframework.stereotype.Component;
 
-@Component
+//@Component
 public class OrderService {
 
     @Autowired
