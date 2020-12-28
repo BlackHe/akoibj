@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 public class SimpleCalculator implements Calculator {
     @Override
     public int add(int a, int b) {
-        System.out.println(1/0);
         return a + b;
     }
 
