@@ -12,6 +12,11 @@ import org.springframework.stereotype.Component;
 //@Component
 public class OrderService {
 
+
+    public OrderService() {
+        System.out.println("orderService construct...");
+    }
+
     @Autowired
     private ProductService productService;
 

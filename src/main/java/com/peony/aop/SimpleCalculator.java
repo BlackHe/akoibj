@@ -3,9 +3,11 @@ package com.peony.aop;
 import com.peony.utils.Sleeper;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Component
 public class SimpleCalculator implements Calculator {
+
     @Override
     public int add(int... args) {
         int result = 0;
