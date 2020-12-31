@@ -7,11 +7,12 @@ import java.util.concurrent.Future;
 
 public class ThreadPoolDemo {
 
-    private int counter = 0;
+
 
 
 
     public int getCounterAndIncrement(){
+        int counter = 0;
         return counter++;
     }
 }
