@@ -1,3 +1,11 @@
-
+一、目标
 验证postProcessor的实例化过程
 跟普通的bean对比，到底是谁先进入到IOC容器的
+
+二、实际情况
+使用同样的注入方式
+@Import({MyService.class,MyBeanPostProcessor.class})
+将 MyService和MyBeanPostProcessor注入到容器，最后发现，BeanPostProcessor接口的子类，
+总是会被先注入到容器
+
+三、源码佐证
