@@ -12,8 +12,13 @@
 1.spring启动的时候，会将配置类MyConfiguration作为参数传给AnnotationConfigApplicationContext(MyConfiguration.class);
 2.spring会在启动初期，往容器里添加一个内置的ConfigurationClassPostProcessor类，这个类就是为后续解析配置用的
 3.解析配置类MyConfiguration.class
-    3.1
-        入口AbstractApplicationContext.refresh() -> invokeBeanFactoryPostProcessors(beanFactory)
+    3.1 处理@Configuration入口
+        AbstractApplicationContext.refresh()
+        -> invokeBeanFactoryPostProcessors(beanFactory)
+        -> invokeBeanDefinitionRegistryPostProcessors(currentRegistryProcessors, registry)
+        -> processConfigBeanDefinitions(registry)
+
+    3.2 解析配置类入口 ConfigurationClassParser.parse()
         解析@CompoentScan
         解析@Import   ConfigurationClassParser.processImports
             处理ImportSelector.class
