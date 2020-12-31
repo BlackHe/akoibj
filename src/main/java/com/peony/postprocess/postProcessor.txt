@@ -9,3 +9,20 @@
 总是会被先注入到容器
 
 三、源码佐证
+1.spring启动的时候，会将配置类MyConfiguration作为参数传给AnnotationConfigApplicationContext(MyConfiguration.class);
+2.spring会在启动初期，往容器里添加一个内置的ConfigurationClassPostProcessor类，这个类就是为后续解析配置用的
+3.解析配置类MyConfiguration.class
+    3.1
+        入口AbstractApplicationContext.refresh() -> invokeBeanFactoryPostProcessors(beanFactory)
+        解析@CompoentScan
+        解析@Import   ConfigurationClassParser.processImports
+            处理ImportSelector.class
+            处理ImportBeanDefinitionRegistrar.class
+            处理简单导入@Import({MyService.class,MyBeanPostProcessor.class})
+        解析@Bean
+    3.2 将配置类里引入的bean类型缓存
+        Map<ConfigurationClass, ConfigurationClass> configurationClasses
+    3.3
+        bean类型缓存加载到BeanDefinition
+        ConfigurationClassBeanDefinitionReader.loadBeanDefinitions(configClasses)
+
