@@ -9,7 +9,6 @@ public class MyService {
         System.out.println("myService instanin......");
     }
 
-    @Transactional
     public void update(){
 
     }
