@@ -6,7 +6,19 @@
 使用同样的注入方式
 @Import({MyService.class,MyBeanPostProcessor.class})
 将 MyService和MyBeanPostProcessor注入到容器，最后发现，BeanPostProcessor接口的子类，
-总是会被先注入到容器
+总是会被先注入到容器,是在
+refresh()-> registerBeanPostProcessors(beanFactory)中，
+将所有的Bean定义注册到BeanDefinitionRegistery中，并且会将BeanPostProcessor接口的子类，先进行实例化并放到IOC容器
+代码如下，其实spring会按照优先级，实例化不同类型的BeanPostProcessor
+// Now, register all regular BeanPostProcessors.
+List<BeanPostProcessor> nonOrderedPostProcessors = new ArrayList<>();
+for (String ppName : nonOrderedPostProcessorNames) {
+    BeanPostProcessor pp = beanFactory.getBean(ppName, BeanPostProcessor.class);  //beanFactory.getBean就将MyBeanPostProcessor注册到容器了
+    nonOrderedPostProcessors.add(pp);
+    if (pp instanceof MergedBeanDefinitionPostProcessor) {
+        internalPostProcessors.add(pp);
+    }
+}
 
 三、源码佐证
 1.spring启动的时候，会将配置类MyConfiguration作为参数传给AnnotationConfigApplicationContext(MyConfiguration.class);
@@ -20,14 +32,17 @@
 
     3.2 解析配置类入口 ConfigurationClassParser.parse()
         解析@CompoentScan
+            会把配置的扫描范围内的所有Bean Class都找到
+            将这些类的【bean类型缓存】 Map<ConfigurationClass, ConfigurationClass> configurationClasses
         解析@Import   ConfigurationClassParser.processImports
             处理ImportSelector.class
             处理ImportBeanDefinitionRegistrar.class
             处理简单导入@Import({MyService.class,MyBeanPostProcessor.class})
+            将配置类里引入的【bean类型缓存】
         解析@Bean
-    3.2 将配置类里引入的bean类型缓存
-        Map<ConfigurationClass, ConfigurationClass> configurationClasses
-    3.3
+            将配置类里引入的【bean类型缓存】
+    3.2 将【bean类型缓存】加载到BeanDefinition
         bean类型缓存加载到BeanDefinition
         ConfigurationClassBeanDefinitionReader.loadBeanDefinitions(configClasses)
+
 
