@@ -34,4 +34,12 @@ public class BookDO implements Serializable {
                 ", name='" + name + '\'' +
                 '}';
     }
+
+
+    public BookDO(int id) {
+        this.id = id;
+    }
+
+    public BookDO() {
+    }
 }

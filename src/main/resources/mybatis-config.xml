@@ -2,28 +2,49 @@
 <!DOCTYPE configuration
         PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
-<configuration>
 
+
+<configuration>
     <environments default="development">
         <environment id="development">
             <transactionManager type="JDBC"/>
             <dataSource type="POOLED">
                 <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
-                <property name="url"
-                          value="jdbc:mysql://localhost:3306/albertNlg?useUnicode=true&amp;characterEncoding=UTF-8"/>
+                <property name="url" value="jdbc:mysql://localhost:3306/readinglist?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC"/>
                 <property name="username" value="root"/>
-                <property name="password" value="123456"/>
+                <property name="password" value="1234"/>
             </dataSource>
         </environment>
     </environments>
-
     <mappers>
-        <!--<package name="com.peony.repository"/>-->
-        <mapper resource="mapper/bookMapper.xml" class="" url=""/>
-        <mapper resource="mapper/bookMapper.xml" class="" url=""/>
+        <mapper resource="mapper/bookMapper.xml"/>
     </mappers>
-
-    <plugins>
-        <plugin interceptor="c"></plugin>
-    </plugins>
 </configuration>
+
+<!--<configuration>-->
+
+<!--    <environments default="development">-->
+<!--        <environment id="development">-->
+<!--            <transactionManager type="JDBC"/>-->
+<!--            <dataSource type="POOLED">-->
+<!--                <property name="driver" value="com.mysql.cj.jdbc.Driver"/>-->
+<!--                <property name="url"-->
+<!--                          value="jdbc:mysql://localhost:3306/albertNlg?useUnicode=true&amp;characterEncoding=UTF-8"/>-->
+<!--                <property name="username" value="root"/>-->
+<!--                <property name="password" value="123456"/>-->
+<!--            </dataSource>-->
+<!--        </environment>-->
+<!--    </environments>-->
+
+<!--    <mappers>-->
+<!--        &lt;!&ndash;<package name="com.peony.repository"/>&ndash;&gt;-->
+<!--        <mapper resource="mapper/bookMapper.xml" class="" url=""/>-->
+<!--        <mapper resource="mapper/bookMapper.xml" class="" url=""/>-->
+<!--    </mappers>-->
+
+<!--    <plugins>-->
+<!--        <plugin interceptor="c"></plugin>-->
+<!--    </plugins>-->
+<!--</configuration>-->
+
+
