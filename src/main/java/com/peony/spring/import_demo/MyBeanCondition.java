@@ -9,7 +9,7 @@ public class MyBeanCondition implements Condition {
     @Override
     public boolean matches(ConditionContext context, AnnotatedTypeMetadata metadata) {
         Environment environment = context.getEnvironment();
-        if(environment.containsProperty("sys.env")){
+        if (environment.containsProperty("sys.env")) {
             return true;
         }
         return false;

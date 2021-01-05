@@ -5,7 +5,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 
 @Configuration
-@Import({MyService.class,MyBeanPostProcessor.class})
+@Import({MyService.class, MyBeanPostProcessor.class})
 @ComponentScan
 public class MyConfiguration {
 

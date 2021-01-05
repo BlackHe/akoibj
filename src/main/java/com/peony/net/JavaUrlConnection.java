@@ -16,7 +16,7 @@ public class JavaUrlConnection {
 
         URL url = new URL("http://localhost:8001/product/get/2323");
 
-        HttpURLConnection urlConnection = (HttpURLConnection)url.openConnection();
+        HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
 
         urlConnection.setDoInput(true);
 
@@ -32,7 +32,7 @@ public class JavaUrlConnection {
 
         String line = null;
 
-        while ((line = reader.readLine()) != null){
+        while ((line = reader.readLine()) != null) {
             System.out.println(line);
         }
 

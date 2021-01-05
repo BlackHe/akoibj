@@ -17,7 +17,6 @@ public class FailedSycn {
     final static int taskSum = 3;
 
 
-
     public static void main(String[] args) {
 
         Log.info("请输入一个整数");
@@ -29,40 +28,40 @@ public class FailedSycn {
         scanChain.start();
         blockAnalysis.start();
         generalOrder.start();
-        try{
+        try {
             scanChain.join();
             blockAnalysis.join();
             generalOrder.join();
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
     }
 
-    static class Task implements Runnable{
+    static class Task implements Runnable {
         int taskId;
         String taskName;
 
-        public Task(String taskName,int taskId) {
+        public Task(String taskName, int taskId) {
             this.taskName = taskName;
             this.taskId = taskId;
-            Log.info("[%s]任务已初始化",taskName);
+            Log.info("[%s]任务已初始化", taskName);
         }
 
         @Override
         public void run() {
-            Log.info("[%s]任务启动",taskName);
+            Log.info("[%s]任务启动", taskName);
 
-            while (runOfNormal){
+            while (runOfNormal) {
                 Sleeper.sleep(new Random().nextInt(3));
-                Log.info("[%s]任务正在执行任务",taskName);
-                if (errorNumThresold > 0 && errorNumThresold % taskSum == taskId){
-                    Log.info("[%s]任务出错，发出信号并安全退出",taskName);
+                Log.info("[%s]任务正在执行任务", taskName);
+                if (errorNumThresold > 0 && errorNumThresold % taskSum == taskId) {
+                    Log.info("[%s]任务出错，发出信号并安全退出", taskName);
                     runOfNormal = false;
                     return;
                 }
             }
-            Log.info("其他任务出错，[%s]任务安全退出",taskName);
+            Log.info("其他任务出错，[%s]任务安全退出", taskName);
 
         }
     }

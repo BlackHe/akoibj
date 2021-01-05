@@ -23,19 +23,19 @@ public class RpcServer {
         serverSocketChannel.bind(new InetSocketAddress(16888));
         serverSocketChannel.configureBlocking(false);
 
-        while (true){
+        while (true) {
             Sleeper.sleep(1);
             SocketChannel clientChannel = serverSocketChannel.accept();
-            if (clientChannel == null){
+            if (clientChannel == null) {
                 System.out.println("accept non block,immediately return");
-            }else {
+            } else {
                 clientChannel.configureBlocking(false);
                 clientChannels.add(clientChannel);
             }
 
 
             clientChannels.forEach(i -> {
-                Log.info("new client connect: %s",i.socket().getPort()+"");
+                Log.info("new client connect: %s", i.socket().getPort() + "");
                 try {
                     /**NIO的问题*/
                     // 非阻塞是实现了，
@@ -48,13 +48,13 @@ public class RpcServer {
                     // 即一个系统调用中，放了很多个fd，很多条路，复用了一个系统调用，这就是【【【【多路复用】】】】
                     // 2.如果内核回调上层应用，或发布异步IO事件，上层应用被动感知到IO事件，也可以解决用户态循环遍历系统调用的问题
                     int count = i.read(byteBuffer);
-                    if (count == -1){
+                    if (count == -1) {
                         return;
                     }
                     byteBuffer.flip();
                     byte[] bytes = new byte[byteBuffer.remaining()];
                     byteBuffer.get(bytes);
-                    Log.info("client: %s",new String(bytes, CharsetUtils.UTF_8));
+                    Log.info("client: %s", new String(bytes, CharsetUtils.UTF_8));
                     byteBuffer.clear();
                 } catch (IOException e) {
                     e.printStackTrace();

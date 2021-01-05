@@ -9,7 +9,7 @@ public class MyService {
         System.out.println("myService instanin......");
     }
 
-    public void update(){
+    public void update() {
 
     }
 }

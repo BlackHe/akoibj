@@ -10,8 +10,8 @@ public class TurningPrintByVolatile {
     private final static char[] charsI = {'1', '2', '3', '4', '5', '6'};
     private final static char[] charsC = {'A', 'B', 'C', 'D', 'E', 'F'};
 
-    enum RunThreadType{
-        T1,T2
+    enum RunThreadType {
+        T1, T2
     }
 
     private static volatile RunThreadType readToRun = RunThreadType.T1;
@@ -22,7 +22,9 @@ public class TurningPrintByVolatile {
 
         t1 = new Thread(() -> {
             for (char c : charsI) {
-                while (readToRun != RunThreadType.T1){};
+                while (readToRun != RunThreadType.T1) {
+                }
+                ;
                 System.out.print(c);
                 readToRun = RunThreadType.T2;
             }
@@ -30,7 +32,9 @@ public class TurningPrintByVolatile {
 
         t2 = new Thread(() -> {
             for (char c : charsC) {
-                while (readToRun != RunThreadType.T2){};
+                while (readToRun != RunThreadType.T2) {
+                }
+                ;
                 System.out.print(c);
                 readToRun = RunThreadType.T1;
             }

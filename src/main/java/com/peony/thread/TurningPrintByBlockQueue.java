@@ -17,7 +17,7 @@ public class TurningPrintByBlockQueue {
     private final static BlockingQueue<String> queue1 = new ArrayBlockingQueue<>(1);
     private final static BlockingQueue<String> queue2 = new ArrayBlockingQueue<>(1);
 
-    private static Thread t1,t2;
+    private static Thread t1, t2;
 
     public static void main(String[] args) {
         t1 = new Thread(() -> {

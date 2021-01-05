@@ -5,11 +5,11 @@ import java.net.Socket;
 
 public class RpcServer {
 
-    public static void main(String[] args) throws Exception{
+    public static void main(String[] args) throws Exception {
 
         ServerSocket serverSocket = new ServerSocket(5001);
 
-        while (true){
+        while (true) {
 
             //此处会阻塞
             Socket client = serverSocket.accept();

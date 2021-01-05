@@ -13,7 +13,7 @@ public class OOMTest {
     private static ThreadLocal<byte[]> tl = new ThreadLocal<>();
     private static ThreadLocal<String> t2 = new ThreadLocal<>();
 
-    static int one_m = 1024*1024;
+    static int one_m = 1024 * 1024;
 
     public static void main(String[] args) {
 
@@ -62,7 +62,7 @@ public class OOMTest {
 
     }
 
-    public static void sleep(long seconds){
+    public static void sleep(long seconds) {
         try {
             TimeUnit.SECONDS.sleep(seconds);
         } catch (InterruptedException e) {
@@ -70,10 +70,10 @@ public class OOMTest {
         }
     }
 
-    public static void blockOnReadIn(){
+    public static void blockOnReadIn() {
         try {
             int read = System.in.read();
-            Log.info("释放了["+read+"]个许可");
+            Log.info("释放了[" + read + "]个许可");
         } catch (IOException e) {
             e.printStackTrace();
         }

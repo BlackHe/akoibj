@@ -16,6 +16,6 @@ public class DatetimeUtils {
 //        String format = dtf.format(now);
 //        System.out.println(format);
 //        System.out.println(nowStr);
-        System.out.println(1*24*60*60*1000);
+        System.out.println(1 * 24 * 60 * 60 * 1000);
     }
 }

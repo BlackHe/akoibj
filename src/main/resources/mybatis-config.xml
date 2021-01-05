@@ -38,8 +38,8 @@
 
 <!--    <mappers>-->
 <!--        &lt;!&ndash;<package name="com.peony.repository"/>&ndash;&gt;-->
-<!--        <mapper resource="mapper/bookMapper.xml" class="" url=""/>-->
-<!--        <mapper resource="mapper/bookMapper.xml" class="" url=""/>-->
+<!--        <mapper resource="mapper/bookDao.xml" class="" url=""/>-->
+<!--        <mapper resource="mapper/bookDao.xml" class="" url=""/>-->
 <!--    </mappers>-->
 
 <!--    <plugins>-->

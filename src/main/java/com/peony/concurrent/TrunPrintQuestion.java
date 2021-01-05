@@ -17,7 +17,7 @@ public class TrunPrintQuestion {
                 LockSupport.unpark(t2);
                 LockSupport.park();
             }
-        },"t1");
+        }, "t1");
 
         t2 = new Thread(() -> {
             for (char c : AC) {
@@ -25,7 +25,7 @@ public class TrunPrintQuestion {
                 System.out.print(c);
                 LockSupport.unpark(t1);
             }
-        },"t2");
+        }, "t2");
         t1.start();
         t2.start();
     }

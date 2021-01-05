@@ -5,7 +5,7 @@
 <mapper namespace="com.peony.ibatis.repository.BookDAO">
 
 
-    <!-- 控制是否开启二级缓存（namespace范围）-->
+     <!--控制是否开启二级缓存（namespace范围）-->
     <!--<cache />-->
 
     <!--<cache-ref namespace="com.peony.ibatis.repository.BookDAO"/>-->
@@ -15,26 +15,13 @@
         values (#{id},#{name})
     </insert>
 
-    <resultMap id="bookResultMap" type="com.peony.ibatis.entity.BookDO">
-        <result column="name" property="name"></result>
-    </resultMap>
 
-    <sql id="selectSqlCondition">
-        <if test=" name != null and name !='' ">name = #{name}</if>
-    </sql>
-
-    <sql id="baseSelect">
+    <select id="select" parameterType="com.peony.ibatis.entity.BookDO" resultType="com.peony.ibatis.entity.BookDO">
+        select
         `id` as id,
         `name` as name
-    </sql>
-
-    <select id="selectList" parameterType="com.peony.ibatis.entity.BookDO" resultMap="bookResultMap">
-        select
-        <include refid="baseSelect"></include>
         from book
-        <where>
-            <include refid="selectSqlCondition"></include>
-        </where>
+        where id = #{id}
     </select>
 
 

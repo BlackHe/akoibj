@@ -10,12 +10,12 @@ import org.springframework.context.annotation.Primary;
 public class BeanConfiguration {
 
     @Bean
-    public OrderService orderService1(){
+    public OrderService orderService1() {
         return new OrderService();
     }
 
     @Bean
-    public OrderService orderService2(){
+    public OrderService orderService2() {
         return new OrderService();
     }
 }

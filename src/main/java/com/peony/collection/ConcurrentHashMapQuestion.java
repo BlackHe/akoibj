@@ -9,7 +9,7 @@ public class ConcurrentHashMapQuestion {
 
     public static void main(String[] args) {
         ConcurrentHashMap<String, String> map = new ConcurrentHashMap<>(16);
-        map.put("name","black");
+        map.put("name", "black");
         // ConcurrentHashMap的key和value都不能为null,否则后抛出NPE
 //        concurrentHashMap.put("name",null);
         // 采用了分段锁的机制，锁的粒度缩小到Node节点级别

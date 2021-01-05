@@ -7,11 +7,11 @@ public class TimeZoneTest {
 
     public static void main(String[] args) {
         int i = 0;
-        do{
+        do {
             System.out.println(i);
             i++;
             if (i > 10) break;
-        }while (true);
+        } while (true);
     }
 
 }

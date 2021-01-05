@@ -17,7 +17,7 @@ public class MainConfig {
         ApplicationContext ac = new AnnotationConfigApplicationContext(MainConfig.class);
 //        Calculator calculator = ac.getBean("simpleCalculator", Calculator.class);
         Calculator calculator = ac.getBean(Calculator.class);
-        calculator.add(823,9283,-9238,9);
+        calculator.add(823, 9283, -9238, 9);
 //        new Thread(() -> calculator.add(823,9283,-9238,9),"my-thread1").start();
 //        new Thread(() -> calculator.subtraction(823,9283),"my-thread2").start();
 //        new Thread(() -> calculator.add(0,0,1),"my-thread3").start();

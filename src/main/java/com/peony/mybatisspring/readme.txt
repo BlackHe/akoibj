@@ -1,0 +1,4 @@
+MapperFactoryBean
+mybatis-spring中，每一个DAO接口在BeanDefinition中，它的类型都是MapperFactoryBean
+，这样在实例化的bean的时候，spring不是直接去实例化我们的DAO接口，而是调用MapperFactoryBean的
+getObject()方法，获取实例。这也是一个很典型的FactoryBean的应用

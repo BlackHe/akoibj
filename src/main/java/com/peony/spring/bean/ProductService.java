@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service()
-public class ProductService{
+public class ProductService {
 
 
     @Autowired
@@ -16,6 +16,7 @@ public class ProductService{
     public OrderService getOrderService2() {
         return orderService2;
     }
+
     public OrderService getOrderService1() {
         return orderService1;
     }

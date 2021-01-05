@@ -7,7 +7,6 @@ import java.util.concurrent.TimeUnit;
 public class CyclicBarrierTest {
 
 
-
     public static void main(String[] args) {
 
         CyclicBarrier barrier = new CyclicBarrier(2);
@@ -24,7 +23,7 @@ public class CyclicBarrierTest {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-        },"t1").start();
+        }, "t1").start();
 
         new Thread(() -> {
             try {
@@ -38,7 +37,7 @@ public class CyclicBarrierTest {
                 e.printStackTrace();
             }
             System.out.println(Thread.currentThread().getName());
-        },"t2").start();
+        }, "t2").start();
 
         try {
             countDownLatch.await();
@@ -61,7 +60,7 @@ public class CyclicBarrierTest {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-        },"t3").start();
+        }, "t3").start();
 
         new Thread(() -> {
             try {
@@ -75,11 +74,11 @@ public class CyclicBarrierTest {
                 e.printStackTrace();
             }
             System.out.println(Thread.currentThread().getName());
-        },"t4").start();
+        }, "t4").start();
 
     }
 
-    public static void sleep(long seconds){
+    public static void sleep(long seconds) {
         try {
             TimeUnit.SECONDS.sleep(seconds);
         } catch (InterruptedException e) {

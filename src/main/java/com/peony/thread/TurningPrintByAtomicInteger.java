@@ -12,7 +12,7 @@ public class TurningPrintByAtomicInteger {
     private final static char[] charsI = {'1', '2', '3', '4', '5', '6'};
     private final static char[] charsC = {'A', 'B', 'C', 'D', 'E', 'F'};
 
-    private static Thread t1,t2;
+    private static Thread t1, t2;
 
     private static AtomicInteger runPointer = new AtomicInteger();
 
@@ -20,7 +20,9 @@ public class TurningPrintByAtomicInteger {
 
         t1 = new Thread(() -> {
             for (char c : charsI) {
-                while (runPointer.get() != 1){};
+                while (runPointer.get() != 1) {
+                }
+                ;
                 System.out.print(c);
                 runPointer.set(2);
             }
@@ -28,7 +30,9 @@ public class TurningPrintByAtomicInteger {
 
         t2 = new Thread(() -> {
             for (char c : charsC) {
-                while (runPointer.get() != 2) {};
+                while (runPointer.get() != 2) {
+                }
+                ;
                 System.out.print(c);
                 runPointer.set(1);
             }

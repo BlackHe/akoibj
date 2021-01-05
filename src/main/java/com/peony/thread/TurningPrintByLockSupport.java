@@ -14,11 +14,11 @@ public class TurningPrintByLockSupport {
     private static final char[] charI = "123456".toCharArray();
     private static final char[] charC = "ABCDEF".toCharArray();
 
-    private static Thread t1,t2;
+    private static Thread t1, t2;
 
     public static void main(String[] args) {
 
-        t1 = new Thread(() ->{
+        t1 = new Thread(() -> {
             for (char c : charI) {
                 System.out.print(c);
                 LockSupport.unpark(t2);
@@ -26,7 +26,7 @@ public class TurningPrintByLockSupport {
             }
         });
 
-        t2 = new Thread(() ->{
+        t2 = new Thread(() -> {
             for (char c : charC) {
                 LockSupport.park();
                 System.out.print(c);
@@ -37,7 +37,6 @@ public class TurningPrintByLockSupport {
         t1.start();
         t2.start();
     }
-
 
 
 }

@@ -9,26 +9,26 @@ import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
-public class ClientRequestHandler{
+public class ClientRequestHandler {
 
     final static int N_CPUS = Runtime.getRuntime().availableProcessors();
 
 
     static ThreadPoolExecutor poolExecutor = new ThreadPoolExecutor(
-            N_CPUS+1,
-            N_CPUS+1,
+            N_CPUS + 1,
+            N_CPUS + 1,
             0,
             TimeUnit.SECONDS,
             new LinkedBlockingQueue<>(6)
     );
 
-    public static void acceptRequest(Socket socket){
+    public static void acceptRequest(Socket socket) {
 
         poolExecutor.execute(new RequestHandlerWorker(socket));
 
     }
 
-    static class RequestHandlerWorker implements Runnable{
+    static class RequestHandlerWorker implements Runnable {
 
         Socket socket;
 
@@ -42,10 +42,10 @@ public class ClientRequestHandler{
         }
 
 
-        private void handleRequest(Socket socket){
+        private void handleRequest(Socket socket) {
             try {
 
-                Log.info("接受到客户端 [%s:%s]",socket.getInetAddress().getHostAddress(),socket.getPort()+"");
+                Log.info("接受到客户端 [%s:%s]", socket.getInetAddress().getHostAddress(), socket.getPort() + "");
                 InputStream inputStream = socket.getInputStream();
 
 
@@ -55,7 +55,7 @@ public class ClientRequestHandler{
 
                 inputStream.read(buffer);
 
-                String line = new String(buffer,"UTF-8");
+                String line = new String(buffer, "UTF-8");
 
                 System.out.println(line);
 
@@ -76,7 +76,7 @@ public class ClientRequestHandler{
             }
         }
 
-        public void handleResult(Object result){
+        public void handleResult(Object result) {
             try {
                 OutputStream outputStream = socket.getOutputStream();
                 byte[] bytes = ((String) result).getBytes("UTF-8");
@@ -87,7 +87,6 @@ public class ClientRequestHandler{
 
         }
     }
-
 
 
 }

@@ -16,7 +16,7 @@ public class RpcClient {
         InputStream inputStream = socket.getInputStream();
         byte[] buffer = new byte[inputStream.available()];
         inputStream.read(buffer);
-        System.out.println("server response : " + new String(buffer,"UTF-8"));
+        System.out.println("server response : " + new String(buffer, "UTF-8"));
 
     }
 }

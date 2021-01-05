@@ -23,11 +23,8 @@ public class IbatisTest {
 
         BookDAO bookMapper = sqlSession.getMapper(BookDAO.class);
 
-        BookDO bookDO = new BookDO();
-        bookDO.setName("think in java");
-
-        List<BookDO> bookDOS = bookMapper.selectList(bookDO);
-        System.out.println(bookDOS);
+        BookDO bookDO = bookMapper.select(1);
+        System.out.println(bookDO);
 
     }
 }

@@ -51,7 +51,7 @@ public class ThreadPoolCreateQuestion {
         System.err.printf("线程【%s】正在执行,当前的线程状态是【%s】\n", Thread.currentThread().getName(), Thread.currentThread().getState());
     }
 
-    private static void sleepSeconds(long seconds){
+    private static void sleepSeconds(long seconds) {
         try {
             TimeUnit.SECONDS.sleep(seconds);
         } catch (InterruptedException e) {

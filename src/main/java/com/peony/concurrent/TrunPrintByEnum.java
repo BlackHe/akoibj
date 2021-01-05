@@ -3,7 +3,7 @@ package com.peony.concurrent;
 
 public class TrunPrintByEnum {
 
-    enum ReadyRun{T1,T2}
+    enum ReadyRun {T1, T2}
 
     private volatile static ReadyRun RUNNER = ReadyRun.T1;
 
@@ -14,18 +14,20 @@ public class TrunPrintByEnum {
 
         new Thread(() -> {
             for (char c : AI) {
-                while (ReadyRun.T1 != RUNNER){}
+                while (ReadyRun.T1 != RUNNER) {
+                }
                 System.out.print(c);
                 RUNNER = ReadyRun.T2;
             }
-        },"t1").start();
+        }, "t1").start();
 
         new Thread(() -> {
             for (char c : AC) {
-                while (ReadyRun.T2 != RUNNER){}
+                while (ReadyRun.T2 != RUNNER) {
+                }
                 System.out.print(c);
                 RUNNER = ReadyRun.T1;
             }
-        },"t2").start();
+        }, "t2").start();
     }
 }

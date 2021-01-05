@@ -11,8 +11,7 @@ public class MainTest implements Serializable {
     private int age;
 
 
-
-    static class TwoEle<L,R> implements Cloneable{
+    static class TwoEle<L, R> implements Cloneable {
 
         private L left;
         private R right;
@@ -29,7 +28,7 @@ public class MainTest implements Serializable {
     }
 
 
-    public static void main(String[] args) throws Exception{
+    public static void main(String[] args) throws Exception {
         TwoEle<String, Integer> twoEle = new TwoEle<>("age", 20);
         Node h = new Node("h");
         h.next = new Node("1", new Node("2", new Node("3", null)));

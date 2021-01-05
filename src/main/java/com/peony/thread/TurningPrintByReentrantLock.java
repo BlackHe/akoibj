@@ -38,18 +38,19 @@ public class TurningPrintByReentrantLock {
     static class PrintWorkerA implements Runnable {
 
         boolean isFrist = true;
+
         public void run() {
 
-            while (nextPrintIndex.get() < charArray.length -1 ) {
+            while (nextPrintIndex.get() < charArray.length - 1) {
                 try {
                     lock.lock();
-                    if (isFrist){
+                    if (isFrist) {
                         isFrist = false;
                         latch.countDown();
                     }
                     Log.info("%s --------> %s ", Thread.currentThread().getName(), charArray[nextPrintIndex.get()] + "");
                     nextPrintIndex.getAndIncrement();
-                }  finally {
+                } finally {
                     lock.unlock();
                 }
 
@@ -75,7 +76,7 @@ public class TurningPrintByReentrantLock {
                     lock.lock();
                     Log.info("%s -> %s ", Thread.currentThread().getName(), charArray[nextPrintIndex.get()] + "");
                     nextPrintIndex.getAndIncrement();
-                }finally {
+                } finally {
                     lock.unlock();
                 }
 

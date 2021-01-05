@@ -24,10 +24,10 @@ public class NIORpcServer {
      * select，poll
      * 优势：应用不再遍历fd,而是多个fd,复用一个系统调用，内核自己遍历fd
      * 缺点：它自己不存储fd, 每次都要把fds重新给内核传递一遍，即重复传递fds
-     *
+     * <p>
      * 解决方案：内核自己开辟空间，存储fds   (epoll就采用了红黑树结构，存储了fds)
-     *
-     *
+     * <p>
+     * <p>
      * epoll
      * 优势：内核开辟空间存储客户端连接文件描述符fd
      */
@@ -110,7 +110,7 @@ public class NIORpcServer {
 
         } catch (IOException e) {
             e.printStackTrace();
-        }finally {
+        } finally {
             readBuffer.clear();
         }
 
@@ -121,7 +121,7 @@ public class NIORpcServer {
         writeBuffer.clear();
         Log.info("请输入：");
         Scanner scanner = new Scanner(System.in);
-        String nextLine =scanner.nextLine();
+        String nextLine = scanner.nextLine();
         try {
             writeBuffer.put(nextLine.getBytes("UTF-8"));
             writeBuffer.flip();
@@ -129,7 +129,7 @@ public class NIORpcServer {
             channel.register(selector, SelectionKey.OP_READ);
         } catch (Exception e) {
             e.printStackTrace();
-        }finally {
+        } finally {
             writeBuffer.clear();
         }
 

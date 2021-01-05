@@ -25,9 +25,9 @@ public class Demo {
 
     public static void main(String[] args) {
 
-        localSession.set(new Demo(Thread.currentThread().getName()+"-的线程本地会话"));
+        localSession.set(new Demo(Thread.currentThread().getName() + "-的线程本地会话"));
 
-        connectCtx.set(new Demo(Thread.currentThread().getName()+"-的数据库连接"));
+        connectCtx.set(new Demo(Thread.currentThread().getName() + "-的数据库连接"));
 
         t1 = new Thread(() -> {
             localSession.set(new Demo(Thread.currentThread().getName()));
@@ -40,7 +40,7 @@ public class Demo {
         }, "t1");
 
         t2 = new Thread(() -> {
-            localSession.set(new Demo(Thread.currentThread().getName()+"-的线程本地会话"));
+            localSession.set(new Demo(Thread.currentThread().getName() + "-的线程本地会话"));
             System.out.println("t2: " + localSession.get().name);
         }, "t2");
 

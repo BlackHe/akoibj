@@ -8,8 +8,8 @@ import java.util.concurrent.Future;
 
 public class ProducerTest {
     public static void main(String[] args) {
-        KafkaProducer producer = new KafkaProducer<String,String>(new Properties());
-        Future future = producer.send(new ProducerRecord("t_topic", "first message"),(res,ex) ->{
+        KafkaProducer producer = new KafkaProducer<String, String>(new Properties());
+        Future future = producer.send(new ProducerRecord("t_topic", "first message"), (res, ex) -> {
 
         });
 

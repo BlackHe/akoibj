@@ -23,12 +23,12 @@ public class NIORpcClient {
             channel.connect(inetSocketAddress);
 
             Scanner scanner = new Scanner(System.in);
-            while (true){
+            while (true) {
                 byteBuffer.clear();
                 Log.info("请输入:");
-                String nextLine =scanner.nextLine();
+                String nextLine = scanner.nextLine();
 
-                if ("exit".equals(nextLine)){
+                if ("exit".equals(nextLine)) {
                     break;
                 }
 
@@ -38,7 +38,7 @@ public class NIORpcClient {
                 byteBuffer.clear();
 
                 int read = channel.read(byteBuffer);
-                if (read == -1){
+                if (read == -1) {
                     break;
                 }
 
@@ -47,17 +47,16 @@ public class NIORpcClient {
                 byte[] datas = new byte[byteBuffer.remaining()];
                 byteBuffer.get(datas);
 
-                Log.info("服务端：[%s]",new String(datas,"UTF-8"));
+                Log.info("服务端：[%s]", new String(datas, "UTF-8"));
                 byteBuffer.clear();
 
             }
 
 
-
         } catch (IOException e) {
             e.printStackTrace();
-        }finally {
-            if (channel !=null ){
+        } finally {
+            if (channel != null) {
                 try {
                     channel.close();
                 } catch (IOException e) {
