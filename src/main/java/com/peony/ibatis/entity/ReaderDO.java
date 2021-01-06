@@ -3,7 +3,7 @@ package com.peony.ibatis.entity;
 
 import java.io.Serializable;
 
-public class BookDO implements Serializable {
+public class ReaderDO implements Serializable {
 
 
     private int id;
@@ -29,22 +29,22 @@ public class BookDO implements Serializable {
 
     @Override
     public String toString() {
-        return "BookDO{" +
+        return "Reader{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 '}';
     }
 
 
-    public BookDO(int id) {
+    public ReaderDO(int id) {
         this.id = id;
     }
 
 
-    public BookDO(String name) {
+    public ReaderDO(String name) {
         this.name = name;
     }
 
-    public BookDO() {
+    public ReaderDO() {
     }
 }

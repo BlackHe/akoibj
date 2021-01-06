@@ -1,4 +1,11 @@
-MapperFactoryBean
-mybatis-spring中，每一个DAO接口在BeanDefinition中，它的类型都是MapperFactoryBean
-，这样在实例化的bean的时候，spring不是直接去实例化我们的DAO接口，而是调用MapperFactoryBean的
+一、MapperFactoryBean
+mybatis-spring中，每一个DAO接口在BeanDefinition中，它的类型都是MapperFactoryBean，
+这样在实例化的bean的时候，spring不是直接去实例化我们的DAO接口，而是调用MapperFactoryBean的
 getObject()方法，获取实例。这也是一个很典型的FactoryBean的应用
+
+二、事物
+当事物类没有接口时，spring会默认使用cglib代理
+事物方法调用时，实际上就是在调用CglibAopProxy.DynamicAdvisedInterceptor.intercept
+业务对象会被代理为切面对象，切面对象中包装了源业务对象信息，以及事物切面对象；
+通过拦截器链+递归的思想，处理aop == > ReflectiveMethodInvocation.proceed
+org.springframework.transaction.interceptor.TransactionInterceptor.invoke  事物拦截器，如果有事物，则会被这个方法拦截

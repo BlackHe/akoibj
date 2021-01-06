@@ -11,8 +11,8 @@
     <!--<cache-ref namespace="com.peony.ibatis.repository.BookDAO"/>-->
 
     <insert id="insert" parameterType="com.peony.ibatis.entity.BookDO">
-        insert into book
-        values (#{id},#{name})
+        insert into book(name)
+        values (#{name})
     </insert>
 
 
