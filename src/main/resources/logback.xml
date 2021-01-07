@@ -44,6 +44,7 @@
     </root>
 
     <logger name="com.apache" level="DEBUG"/>
+    <logger name="org.springframework.transaction" level="DEBUG"/>
     <logger name="com.peony.ibatis" level="INFO"/>
     <logger name="com.peony.ibatis.common.jdbc.SimpleDataSource" level="DEBUG"/>
     <logger name="com.peony.ibatis.common.jdbc.ScriptRunner" level="DEBUG"/>

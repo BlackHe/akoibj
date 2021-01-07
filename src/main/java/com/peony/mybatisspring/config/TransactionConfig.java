@@ -5,14 +5,18 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.jdbc.datasource.DataSourceTransactionManager;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.sql.DataSource;
 
 @Configuration
-//@EnableTransactionManagement
+@EnableTransactionManagement
 @MapperScan(basePackages = {"com.peony.ibatis.repository"})
+@ComponentScan(basePackages = {"com.peony.ibatis"})
 public class TransactionConfig {
 
     @Bean
@@ -28,9 +32,20 @@ public class TransactionConfig {
     public SqlSessionFactory sqlSessionFactory() throws Exception {
         SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
         sqlSessionFactoryBean.setDataSource(dataSource());
-        sqlSessionFactoryBean.setMapperLocations(new ClassPathResource[]{new ClassPathResource("mapper/bookMapper.xml")});
+        ClassPathResource[] resources = new ClassPathResource[]{
+                new ClassPathResource("mapper/bookMapper.xml"),
+                new ClassPathResource("mapper/readerMapper.xml"),
+        };
+        sqlSessionFactoryBean.setMapperLocations(resources);
         return sqlSessionFactoryBean.getObject();
     }
 
+
+    @Bean
+    public DataSourceTransactionManager dataSourceTransactionManager(){
+        DataSourceTransactionManager txManager = new DataSourceTransactionManager();
+        txManager.setDataSource(dataSource());
+        return txManager;
+    }
 
 }
