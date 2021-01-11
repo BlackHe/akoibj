@@ -1,7 +1,9 @@
 package com.peony.event;
 
 import com.peony.event.domain.event.ConnectEvent;
+import com.peony.event.domain.event.RecievedDataEvent;
 import com.peony.event.domain.publisher.DomainEventPublisher;
+import com.peony.event.spring.AsyncableEventMulticaster;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
@@ -21,7 +23,6 @@ import java.util.concurrent.*;
 public class MainTest implements ApplicationContextAware {
 
 
-    private static ExecutorService executor = Executors.newFixedThreadPool(5);
 
     private ApplicationContext context;
 
@@ -29,7 +30,6 @@ public class MainTest implements ApplicationContextAware {
         ConfigurableApplicationContext context = new AnnotationConfigApplicationContext(MainTest.class);
         DomainEventPublisher domainEventPublisher = context.getBean(DomainEventPublisher.class);
         new MainTest().publish(domainEventPublisher);
-        executor.shutdown();
     }
 
     public void publish(DomainEventPublisher domainEventPublisher){
@@ -39,13 +39,22 @@ public class MainTest implements ApplicationContextAware {
         domainEventPublisher.publishEvent(new ConnectEvent(this,"187.99.0.38"));
         domainEventPublisher.publishEvent(new ConnectEvent(this,"187.99.0.48"));
         domainEventPublisher.publishEvent(new ConnectEvent(this,"187.99.0.58"));
+
+        domainEventPublisher.publishEvent(new RecievedDataEvent("hahah"));
     }
 
+//    @Bean(name = AbstractApplicationContext.APPLICATION_EVENT_MULTICASTER_BEAN_NAME)
+//    public SimpleApplicationEventMulticaster applicationEventMulticaster(){
+//        SimpleApplicationEventMulticaster simpleApplicationEventMulticaster = new SimpleApplicationEventMulticaster(context);
+//        simpleApplicationEventMulticaster.setTaskExecutor(executor);
+//        return simpleApplicationEventMulticaster;
+//    }
+
+
     @Bean(name = AbstractApplicationContext.APPLICATION_EVENT_MULTICASTER_BEAN_NAME)
-    public SimpleApplicationEventMulticaster applicationEventMulticaster(){
-        SimpleApplicationEventMulticaster simpleApplicationEventMulticaster = new SimpleApplicationEventMulticaster(context);
-        simpleApplicationEventMulticaster.setTaskExecutor(executor);
-        return simpleApplicationEventMulticaster;
+    public AsyncableEventMulticaster applicationEventMulticaster(){
+        AsyncableEventMulticaster asyncableEventMulticaster = new AsyncableEventMulticaster();
+        return asyncableEventMulticaster;
     }
 
     @Override
