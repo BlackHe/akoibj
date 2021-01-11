@@ -24,7 +24,7 @@ public class TransactionConfig {
         DruidDataSource dataSource = new DruidDataSource();
         dataSource.setUrl("jdbc:mysql://localhost:3306/readinglist?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC");
         dataSource.setUsername("root");
-        dataSource.setPassword("12345678");
+        dataSource.setPassword("1234");
         return dataSource;
     }
 

@@ -10,7 +10,13 @@ getObject()方法，获取实例。这也是一个很典型的FactoryBean的应�
 通过拦截器链+递归的思想，处理aop == > ReflectiveMethodInvocation.proceed
 org.springframework.transaction.interceptor.TransactionInterceptor.invoke  事物拦截器，如果有事物，则会被这个方法拦截
 
-
+三、事务代理对象 创建时机
+doCreateBean -》 doCreateBean -》 populateBean(beanName, mbd, instanceWrapper) -》 initializeBean(beanName, exposedObject, mbd)
+-》 applyBeanPostProcessorsAfterInitialization
+-》AbstractAutoProxyCreator.postProcessAfterInitialization -> wrapIfNecessary
+-》getAdvicesAndAdvisorsForBean 通过这个方法找到事务切面
+-》findAdvisorsThatCanApply -》 findAdvisorsThatCanApply 通过这个方法 判断是否需要包装为代理对象
+-> createProxy
 
 【SqlSession频繁创建问题】
 一、问题

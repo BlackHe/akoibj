@@ -16,10 +16,14 @@ public class ProcessService {
     private ReaderService readerService;
 
 
-//    @Transactional
+    @Transactional
     public void addedBook(BookDO bookDO, ReaderDO readerDO){
         bookService.create(bookDO);
         readerService.create(readerDO);
+    }
+
+    public void remove(BookDO bookDO){
+        bookService.create(bookDO);
     }
 
 

@@ -13,12 +13,13 @@ public class TestTx {
     public static void main(String[] args) {
         AnnotationConfigApplicationContext ac = new AnnotationConfigApplicationContext(TransactionConfig.class);
 
-//        ProcessService processService = ac.getBean(ProcessService.class);
-//        processService.addedBook(new BookDO("micro service"),new ReaderDO("james"));
+        ProcessService processService = ac.getBean(ProcessService.class);
+        processService.addedBook(new BookDO("micro service"),new ReaderDO("james"));
+        processService.remove(new BookDO("micro service"));
 //
-        BookDAO bookDAO = ac.getBean(BookDAO.class);
-        System.out.println(bookDAO.select(1));
-        System.out.println(bookDAO.select(2));
-        System.out.println(bookDAO.select(3));
+//        BookDAO bookDAO = ac.getBean(BookDAO.class);
+//        System.out.println(bookDAO.select(1));
+//        System.out.println(bookDAO.select(2));
+//        System.out.println(bookDAO.select(3));
     }
 }
