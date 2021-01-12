@@ -3,5 +3,5 @@ spring event原理解析
 1.通过spring发出事件后，实际上调用了事件多播器【AbstractApplicationEventMulticaster】
 2.多播器查询到该事件的所有监听者
 3.一个一个调用监听者
-4.多播器是spring在IOC容器启动的时候，初始化好的。
-5.监听者是spring在初始化bean完成后，通过后置处理器找到所有的<事件,监听者列表>的列表并缓存好的
+4.多播器是spring在IOC容器启动的时候，初始化好的。AbstractApplicationContext.refresh()-> initApplicationEventMulticaster() -> new SimpleApplicationEventMulticaster(beanFactory);
+5.监听者是spring在初始化bean完成后，通过后置处理器找到所有的<事件,监听者列表>的列表并缓存好的。
