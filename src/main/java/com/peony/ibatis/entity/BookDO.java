@@ -10,6 +10,13 @@ public class BookDO implements Serializable {
 
     private String name;
 
+    private String author;
+
+    private String isbn;
+
+    private String desc;
+
+
 
     public int getId() {
         return id;
@@ -35,6 +42,30 @@ public class BookDO implements Serializable {
                 '}';
     }
 
+    public String getIsbn() {
+        return isbn;
+    }
+
+    public void setIsbn(String isbn) {
+        this.isbn = isbn;
+    }
+
+    public String getDesc() {
+        return desc;
+    }
+
+    public void setDesc(String desc) {
+        this.desc = desc;
+    }
+
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
 
     public BookDO(int id) {
         this.id = id;

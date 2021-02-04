@@ -20,6 +20,10 @@ public class Peony {
 //
 //        System.out.println(localDateTime.getHour());
 //        System.out.println(localDateTime.getMinute());
+        String s = "hewenxian/%s/%s";
+        String result = String.format(s, "man", "28");
+        System.out.println(result);
+
 
     }
 
