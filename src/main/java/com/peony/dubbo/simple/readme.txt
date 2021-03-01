@@ -1,1 +1,4 @@
-最简洁的dubbo demo。没有spring,没有注册中心，点对点调用
+最简洁的dubbo demo。没有spring，没有XML；
+从这里也可以看出dubbo最底层，把服务抽象成的数据模型，
+在provider端，一个服务抽象成一个ServiceConfig。给这个ServiceConfig绑定应用配置，协议配置，注册中心配置
+在consumer端，一个被消费的服务抽象成ReferenceConfig。给这个ReferenceConfig绑定应用配置，注册中心（如果点对点调用，直接绑定服务所在的URL）

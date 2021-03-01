@@ -23,6 +23,7 @@ public class SimpleProvider {
 
         RegistryConfig registryConfig = new RegistryConfig(RegistryConfig.NO_AVAILABLE);
 
+
         ServiceConfig<Object> serviceConfig = new ServiceConfig<>();
         serviceConfig.setInterface(UserService.class);
         serviceConfig.setRef(new SimpleUserService());
