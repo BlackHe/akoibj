@@ -1,9 +1,11 @@
 package com.peony.spring.config_parse_source_code;
 
+import org.springframework.beans.BeansException;
+import org.springframework.beans.factory.InitializingBean;
+import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.context.ApplicationEvent;
 import org.springframework.context.annotation.*;
 import org.springframework.context.event.EventListener;
-import org.springframework.core.annotation.AnnotationUtils;
 import org.springframework.core.io.DefaultResourceLoader;
 
 @Configuration
@@ -29,8 +31,25 @@ public class SimpleApplication {
     }
 
 
-    public class Man{
+    public class Man implements InitializingBean, BeanPostProcessor {
         int age = 40;
+
+        @Override
+        public void afterPropertiesSet() throws Exception {
+            System.out.println("initializingBean.afterPropertiesSet");
+        }
+
+        @Override
+        public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
+            System.out.println("before Initialization bean:"+bean + " beanName:"+beanName);
+            return bean;
+        }
+
+        @Override
+        public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
+            System.out.println("after Initialization bean:"+bean + " beanName:"+beanName);
+            return bean;
+        }
     }
 
     public class SimpleDomainEvent extends ApplicationEvent {

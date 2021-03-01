@@ -16,3 +16,4 @@ derby.log
 /bin/
 .mvn/wrapper/maven-wrapper.jar
 /src/main/java/com/peony/design/strategy/uml/.idea/
+/inside-mybatis-source-code.pdf
