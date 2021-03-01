@@ -1,0 +1,1 @@
+最简洁的dubbo demo。没有spring,没有注册中心，点对点调用
