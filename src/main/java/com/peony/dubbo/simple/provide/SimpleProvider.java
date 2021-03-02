@@ -16,12 +16,14 @@ public class SimpleProvider {
         // protocal
         // service
         ApplicationConfig applicationConfig = new ApplicationConfig("simple-provider");
+        applicationConfig.setQosEnable(false);
 
         ProtocolConfig protocolConfig = new ProtocolConfig();
         protocolConfig.setName("dubbo");
         protocolConfig.setPort(-1);
 
-        RegistryConfig registryConfig = new RegistryConfig(RegistryConfig.NO_AVAILABLE);
+        RegistryConfig registryConfig = new RegistryConfig();
+        registryConfig.setAddress("redis://127.0.0.1:6379");
 
 
         ServiceConfig<Object> serviceConfig = new ServiceConfig<>();
