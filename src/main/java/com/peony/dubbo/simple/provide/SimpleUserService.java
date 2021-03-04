@@ -8,6 +8,7 @@ import java.lang.management.ManagementFactory;
 public class SimpleUserService implements UserService {
     @Override
     public UserVO loadUser(String userId) {
+//        System.out.println(1 / 0);
         return new UserVO(userId, ManagementFactory.getRuntimeMXBean().getName());
     }
 }

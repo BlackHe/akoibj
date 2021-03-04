@@ -1,6 +1,7 @@
 package com.peony.dubbo.simple.provide;
 
 import com.peony.dubbo.common.UserService;
+import com.peony.utils.Sleeper;
 import org.apache.dubbo.config.ApplicationConfig;
 import org.apache.dubbo.config.ProtocolConfig;
 import org.apache.dubbo.config.RegistryConfig;
@@ -20,6 +21,7 @@ public class SimpleProvider {
 
         ProtocolConfig protocolConfig = new ProtocolConfig();
         protocolConfig.setName("dubbo");
+        protocolConfig.setSerialization("fastjson");
         protocolConfig.setPort(-1);
 
         RegistryConfig registryConfig = new RegistryConfig();
@@ -29,7 +31,7 @@ public class SimpleProvider {
         ServiceConfig<Object> serviceConfig = new ServiceConfig<>();
         serviceConfig.setInterface(UserService.class);
         serviceConfig.setRef(new SimpleUserService());
-
+        serviceConfig.setCluster("failfast");
         serviceConfig.setRegistry(registryConfig);
         serviceConfig.setApplication(applicationConfig);
         serviceConfig.setProtocol(protocolConfig);
@@ -37,7 +39,7 @@ public class SimpleProvider {
         serviceConfig.export();
         // 不管用xml,还是注解，底层都是解析为这种对象
         System.out.println("服务已导出");
-        System.in.read();
+        Sleeper.sleep(10000);
     }
 
 }
