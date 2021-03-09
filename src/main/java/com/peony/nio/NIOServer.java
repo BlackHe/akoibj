@@ -16,6 +16,7 @@ public class NIOServer {
     public static void main(String[] args) throws IOException {
 
         ServerSocketChannel serverSocketChannel = ServerSocketChannel.open();
+        // 设置非阻塞，将来在 serverSocketChannel上调用accept()时，不管有无客户端连接进来，会立即返回；
         serverSocketChannel.configureBlocking(false);
         ServerSocket serverSocket = serverSocketChannel.socket();
 
