@@ -136,6 +136,7 @@ public class MultiplexingIOServerByReactorMode {
                 ServerSocketChannel serverSocketChannel = (ServerSocketChannel) selectionKey.channel();
                 SocketChannel client = serverSocketChannel.accept();
                 client.configureBlocking(false);
+                //reactor模式的靓点： 客户端socketChannel不再注册到原来的多路复用器上，而是注册到worker线程的多路复用器上
                 int index = routeCount.incrementAndGet() % selectors;
                 queues[index].offer(client);
             } catch (IOException e) {
