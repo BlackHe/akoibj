@@ -73,6 +73,16 @@ public class MultiplexingIOServerBySingleThread {
 
     }
 
+    /**
+     * ByteBuffer的操作四步骤
+     * 1.写入数据到buffer
+     * 2.buffer.flip()
+     * 3.从buffer中读取数据
+     * 4.buffer.clear() 清空缓冲区 buffer.compact() 清空已经读取了的部分区域
+     *
+     * @param selectionKey
+     * @throws IOException
+     */
     private void handleRead(SelectionKey selectionKey) throws IOException{
         SocketChannel socketChannel = (SocketChannel) selectionKey.channel();
         ByteBuffer buffer = (ByteBuffer) selectionKey.attachment();
