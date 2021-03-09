@@ -6,10 +6,10 @@ public class Log {
 
     public static void info(String info, String... strings) {
         if (strings == null || strings.length == 0) {
-            System.out.println(info);
+            System.out.println("["+Thread.currentThread().getName()+"]" + info);
             return;
         }
-        System.out.printf(info + "\n", strings);
+        System.out.printf("["+Thread.currentThread().getName()+"]" + info + "\n", strings);
     }
 
     public static void main(String[] args) {
