@@ -88,12 +88,16 @@ public class MultiplexingIOServerBySingleThread {
         ByteBuffer buffer = (ByteBuffer) selectionKey.attachment();
         // 把buffer清理一下，准备把channel中的数据，读入到buffer中
         buffer.clear();
-
+        // 从channel中读取数据，写入到buffer缓存区
         int readed = socketChannel.read(buffer);
         while (readed > 0){
+            // buffer写模式 设置为 读模式
             buffer.flip();
+            // 读出buffer中的数据 写入到channel
             socketChannel.write(buffer);
+            // 清空buffer
             buffer.clear();
+            // 继续从channel中读取数据，写入到buffer
             readed = socketChannel.read(buffer);
         }
 
