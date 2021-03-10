@@ -21,21 +21,28 @@ public class SimpleNettyServer {
 
         try{
             ServerBootstrap serverBootstrap = new ServerBootstrap();
-            serverBootstrap.group(bossGroup, workerGroup)
-                    .channel(NioServerSocketChannel.class)
-                    .childHandler(new ChannelInitializer<SocketChannel>() {
+
+            serverBootstrap.group(bossGroup, workerGroup);
+
+            serverBootstrap.channel(NioServerSocketChannel.class);
+
+            serverBootstrap.childHandler(new ChannelInitializer<SocketChannel>() {
                         @Override
                         protected void initChannel(SocketChannel channel) throws Exception {
                             channel.pipeline().addLast(new SimpleServerHandler());
                         }
-                    })
-                    .option(ChannelOption.SO_BACKLOG,128)
-                    .childOption(ChannelOption.SO_KEEPALIVE,true);
+                    });
+
+            serverBootstrap.option(ChannelOption.SO_BACKLOG,128);
+
+            serverBootstrap.childOption(ChannelOption.SO_KEEPALIVE,true);
+
             ChannelFuture future = serverBootstrap.bind(port).sync();
+
             future.channel().closeFuture().sync();
 
         }catch (Exception e){
-
+            e.printStackTrace();
         }finally {
             workerGroup.shutdownGracefully();
             bossGroup.shutdownGracefully();
