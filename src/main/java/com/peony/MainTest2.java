@@ -16,33 +16,36 @@ import java.util.*;
 
 public class MainTest2 {
 
-    private static Thread t1 = null;
-    private static Thread t2 = null;
-    private static Thread t3 = null;
+
+    private int a = 's' ;
 
     public static void main(String[] args) throws InterruptedException {
 
+        System.out.println(0xa == 10);
 
-        Method[] methods = MainTest2.class.getMethods();
-        for (Method method : methods) {
-            if (!method.getName().equals("sixSix")){
-                continue;
-            }
-            Method six = method;
-            ParameterizedTypeImpl genericReturnType = (ParameterizedTypeImpl)six.getGenericReturnType();
-            Type[] actualTypeArguments = genericReturnType.getActualTypeArguments();
-
-            for (Type typeArgument : actualTypeArguments) {
-                System.out.println(typeArgument);
-            }
-        }
+        MainTest2 obj = new MainTest2();
+        System.out.println(obj.a);
+        System.out.println(obj.a);
+        obj.exec(obj::defaultCallback);
+        System.out.println(obj.a);
 
 
     }
 
-    public Map<String,Object> sixSix(Map<Long,Integer> param){
-        return new HashMap<>();
+
+    public void exec(Callbacker callbacker) {
+        System.out.println("666");
+        callbacker.callback();
+        System.out.println("777");
     }
 
 
+    interface Callbacker {
+        void callback();
+    }
+
+    public void defaultCallback(){
+        this.a = 199;
+        System.out.println("default callback...");
+    }
 }

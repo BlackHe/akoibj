@@ -1,6 +1,7 @@
 package com.peony.netty;
 
 import io.netty.bootstrap.ServerBootstrap;
+import io.netty.channel.Channel;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelOption;
@@ -37,9 +38,13 @@ public class SimpleNettyServer {
 
             serverBootstrap.childOption(ChannelOption.SO_KEEPALIVE,true);
 
-            ChannelFuture future = serverBootstrap.bind(port).sync();
+            ChannelFuture channelFuture = serverBootstrap.bind(port);
 
-            future.channel().closeFuture().sync();
+            ChannelFuture future = channelFuture.sync();
+
+            Channel channel = future.channel();
+
+            channel.closeFuture();
 
         }catch (Exception e){
             e.printStackTrace();
