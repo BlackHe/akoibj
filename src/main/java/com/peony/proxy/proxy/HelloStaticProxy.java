@@ -1,6 +1,7 @@
 package com.peony.proxy.proxy;
 
 import com.peony.proxy.service.HelloService;
+import com.peony.proxy.service.OrderVO;
 import com.peony.proxy.serviceImpl.HelloServiceImpl;
 
 /**
@@ -20,6 +21,12 @@ public class HelloStaticProxy implements HelloService {
         before();
         this.helloService.sayHello();
         after();
+    }
+
+
+    @Override
+    public OrderVO createOrder(OrderVO param) {
+        return null;
     }
 
     private void before() {
