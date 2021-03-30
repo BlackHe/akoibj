@@ -27,6 +27,10 @@ public class TestThread {
         public void run() {
             for (int i = 0; i < 100; i++) {
                 Log.info("task execute: "+ i);
+                if (Thread.currentThread().isInterrupted()){
+                    Log.info("%s线程相应中断，终止执行",Thread.currentThread().getName());
+                    break;
+                }
                 try {
                     Thread.sleep(1000);
                 } catch (InterruptedException e) {

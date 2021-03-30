@@ -16,7 +16,7 @@
     </insert>
 
 
-    <select id="select" parameterType="com.peony.ibatis.entity.BookDO" resultType="com.peony.ibatis.entity.BookDO">
+    <select id="select" parameterType="com.peony.ibatis.entity.BookDO" resultType="com.peony.ibatis.entity.BookDO" useCache="true">
         select
         `id` as id,
         `name` as name
